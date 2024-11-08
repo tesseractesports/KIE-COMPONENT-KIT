@@ -1,7 +1,7 @@
 <!-- src/components/Banner.svelte -->
 <script>
-    export let title = "Welcome!";
-    export let description = "This is a reusable banner component.";
+    export let title = "";
+    export let description = "";
     import logo from "../assets/Bitmap-logo.png";
   </script>
   
