@@ -2,7 +2,7 @@
 <script>
     export let title = "Welcome!";
     export let description = "This is a reusable banner component.";
-    import logo from "../images/Group-1116601973.svg";
+    export let logo = "../images/Group-1116601973.svg";
   </script>
   
   <div class="banner bg-cover bg-center text-white p-8 rounded-lg shadow-lg" style="background-image: url('../images/Group-1116601973.svg');">
