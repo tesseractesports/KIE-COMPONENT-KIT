@@ -7,14 +7,14 @@ export default defineConfig({
     lib: {
       entry: './src/index.js',
       name: 'MyComponentLibrary',
-      formats: ['es', 'umd'], // Add desired formats here
-      fileName: (format) => `my-component-library.${format}.js`
+      formats: ['es', 'umd'],
+      fileName: (format) => `my-component-library.${format}.js` // Generates .es.js and .umd.js
     },
     rollupOptions: {
       external: ['svelte'],
       output: {
         globals: {
-          svelte: 'svelte'
+          svelte: 'Svelte'
         }
       }
     }
