@@ -1,1 +1,0 @@
-<h1>Esports Calendar work space</h1>
