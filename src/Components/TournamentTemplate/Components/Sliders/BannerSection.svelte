@@ -17,18 +17,18 @@
       {
         title: "Winners Concluded",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
-        image: "/images/Group-1116601973.svg",
-        button1: { text: "Watch Live", icon: "/images/video-camera.svg" },
+        image: "../../../../Assets/images/Group-1116601973.svg",
+        button1: { text: "Watch Live", icon: "../../../../Assets/images/video-camera.svg" },
         button2: { text: "Tournament details" },
         icon: "/images/Union.svg",
       },
       {
         title: "BGIS 2024",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
-        image: "/images/Group-1116601973.svg",
-        button1: { text: "Watch Live", icon: "/images/video-camera.svg" },
+        image: "../../../../Assets/images/Group-1116601973.svg",
+        button1: { text: "Watch Live", icon: "../../../../Assets/images/video-camera.svg" },
         button2: { text: "Tournament details" },
-        icon: "/images/Union.svg"
+        icon: "../../../../Assets/images/Union.svg"
       },
       // Additional slides here...
     ];
