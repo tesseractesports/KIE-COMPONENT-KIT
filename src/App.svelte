@@ -1,6 +1,6 @@
 <script>
-  import Format from "./Components/TournamentTemplate/Components/Format.svelte";
-  import BannerSection from "./Components/TournamentTemplate/Components/Sliders/BannerSection.svelte";
+  import Format from "./components/TournamentTemplate/Components/Format.svelte";
+  import BannerSection from "./components/TournamentTemplate/Components/Sliders/BannerSection.svelte";
 
 </script>
 <Format />
