@@ -1,6 +1,5 @@
 
 export { default as Test } from './src/components/test.svelte';
-export { default as Test1 } from './src/components/test1.svelte';
 export {default as Leaderboard} from './src/components/TournamentTemplate/Pages/ActiveTournaments/LeaderBorad.svelte';
 export {default as OverView} from './src/components/TournamentTemplate/Pages/ActiveTournaments/OverView.svelte';
 export {default as Support} from './src/components/TournamentTemplate/Pages/ActiveTournaments/Support.svelte';
