@@ -7,6 +7,7 @@ export default defineConfig({
     lib: {
       entry: './src/index.js',
       name: 'MyComponentLibrary',
+      formats: ['es', 'umd'], // Add desired formats here
       fileName: (format) => `my-component-library.${format}.js`
     },
     rollupOptions: {
