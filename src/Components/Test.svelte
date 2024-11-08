@@ -2,7 +2,7 @@
 <script>
     export let title = "Welcome!";
     export let description = "This is a reusable banner component.";
-    import logo from "../images/krafton_login_logo_2x.png";
+    export let logo = "s";
   </script>
   
   <div class="banner bg-cover bg-center text-white p-8 rounded-lg shadow-lg" style="background-image: url('../images/krafton_login_logo_2x.png');">
