@@ -2,10 +2,10 @@
 <script>
     export let title = "Welcome!";
     export let description = "This is a reusable banner component.";
-    export let logo = "../assets/images/Group-1116601973.svg";
+    export let logo = "../assets/images/Group 2.png";
   </script>
   
-  <div class="banner bg-cover bg-center text-white p-8 rounded-lg shadow-lg" style="background-image: url('../assets/images/Group-1116601973.svg');">
+  <div class="banner bg-cover bg-center text-white p-8 rounded-lg shadow-lg" style="background-image: url('../images/Group-1116601973.svg');">
     <img src="{logo}" alt="Logo" class="w-16 h-16 mb-4" />
     <h1 class="text-2xl font-bold">{title}</h1>
     <p class="mt-2">{description}</p>
