@@ -6,7 +6,7 @@ import CardSlider from './CardSlider.svelte';
   console.log(data );
   // Array of banner data for looping
   const bannerData = {
-  title: data.banner.title ? data.banner.title : "BMPS 2024",
+  title: data.banner.title ? data.banner.title : "Tournament Name",
   description: data.banner.description,
   logo: data.banner.logo,
   backgroundUrl: data.banner.background,
@@ -17,7 +17,7 @@ import CardSlider from './CardSlider.svelte';
 }
     
 </script>
-{#if bannerData.isLargeBackground && bannerData.largeBackgroundUrl}
+{#if bannerData.isLargeBackground}
   <div class="main-bg bg-cover" style="background-image: url({bannerData.largeBackgroundUrl ? bannerData.largeBackgroundUrl : "https://api.dev.kie.tesseractesports.com/assets/cms_assets/main_banner_bg.png"});">
     <Section>
       <div class="flex items-start w-full">
