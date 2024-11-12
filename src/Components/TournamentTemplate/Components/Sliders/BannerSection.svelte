@@ -3,6 +3,7 @@
 import CardSlider from './CardSlider.svelte';
     import { Splide, SplideSlide } from '@splidejs/svelte-splide';
     export let data = {};
+    console.log(data);
     // Array of banner data for looping
     const banner = {
     title: data.banner.title ? data.banner.title : "BMPS 2024",
