@@ -10,7 +10,7 @@ import CardSlider from './CardSlider.svelte';
   description: data.banner.description,
   logo: data.banner.logo,
   backgroundUrl: data.banner.background,
-  isLargeBackground: false,
+  isLargeBackground: data.banner.largeBackground,
   largeBackgroundUrl: data.banner.largeBackgroundUrl, 
   button1: { text: "Watch Live", url: data.banner.liveChannerUrl},
   button2: { text: "Tournament details", url:"#info" }
