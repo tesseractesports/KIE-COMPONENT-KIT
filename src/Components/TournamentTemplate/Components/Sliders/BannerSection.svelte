@@ -3,22 +3,31 @@
 import CardSlider from './CardSlider.svelte';
   import { Splide, SplideSlide } from '@splidejs/svelte-splide';
   export let data = {};
-  console.log(data );
-  // Array of banner data for looping
+const defaultBannerData = {
+    title: "Tournament Name",
+    description: "No description available",
+    logo: "https://defaultlogo.url/logo.png",
+    backgroundUrl: "https://dev-kie-tmp-docs.s3.ap-south-1.amazonaws.com/tournament-page-assets/BGMI_background.png",
+    isLargeBackground: false,
+    largeBackgroundUrl: "https://dev-kie-tmp-docs.s3.ap-south-1.amazonaws.com/tournament-page-assets/BGMI_background.png",
+    liveChannerUrl: "#",
+  };
+
+  // Use fallback values if `data.banner` or any of its properties are undefined
   const bannerData = {
-  title: data.banner.title ? data.banner.title : "Tournament Name",
-  description: data.banner.description,
-  logo: data.banner.logo,
-  backgroundUrl: data.banner.background,
-  isLargeBackground: data.banner.largeBackground,
-  largeBackgroundUrl: data.banner.largeBackgroundUrl, 
-  button1: { text: "Watch Live", url: data.banner.liveChannerUrl},
-  button2: { text: "Tournament details", url:"#info" }
-}
+    title: data?.banner?.title || defaultBannerData.title,
+    description: data?.banner?.description || defaultBannerData.description,
+    logo: data?.banner?.logo || defaultBannerData.logo,
+    backgroundUrl: data?.banner?.background || defaultBannerData.backgroundUrl,
+    isLargeBackground: data?.banner?.largeBackground || defaultBannerData.isLargeBackground,
+    largeBackgroundUrl: data?.banner?.largeBackgroundUrl || defaultBannerData.largeBackgroundUrl,
+    button1: { text: "Watch Live", url: data?.banner?.liveChannerUrl || defaultBannerData.liveChannerUrl },
+    button2: { text: "Tournament details", url: "#info" }
+  };
     
 </script>
 {#if bannerData.isLargeBackground}
-  <div class="main-bg bg-cover" style="background-image: url({bannerData.largeBackgroundUrl ? bannerData.largeBackgroundUrl : "https://api.dev.kie.tesseractesports.com/assets/cms_assets/main_banner_bg.png"});">
+  <div class="main-bg bg-cover" style="background-image: url({bannerData.largeBackgroundUrl ? bannerData.largeBackgroundUrl : "https://dev-kie-tmp-docs.s3.ap-south-1.amazonaws.com/tournament-page-assets/BGMI_background.png"});">
     <Section>
       <div class="flex items-start w-full">
         <div class="h-full w-full">
