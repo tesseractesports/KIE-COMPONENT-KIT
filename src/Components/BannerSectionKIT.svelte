@@ -1,5 +1,5 @@
 <script>
-  import Section from './Section.svelte';
+  import SectionKIT from './SectionKIT.svelte';
   export let data = {};
 const defaultBannerData = {
     title: "Tournament Name",
@@ -26,7 +26,7 @@ const defaultBannerData = {
 </script>
 {#if bannerData.isLargeBackground}
   <div class="main-bg bg-cover" style="background-image: url({bannerData.largeBackgroundUrl ? bannerData.largeBackgroundUrl : "https://dev-kie-tmp-docs.s3.ap-south-1.amazonaws.com/tournament-page-assets/BGMI_background.png"});">
-    <Section>
+    <SectionKIT>
       <div class="flex items-start w-full">
         <div class="h-full w-full">
           <div class="bg-image flex max-h-full max-w-full flex-col bg-no-repeat">
@@ -59,11 +59,11 @@ const defaultBannerData = {
           </div>
         </div>
       </div>
-    </Section>
+    </SectionKIT>
   </div>
   {:else}
   <div class="main-bg bg-cover" style="background-image: url({bannerData.backgroundUrl ? bannerData.backgroundUrl : "https://dev-kie-tmp-docs.s3.ap-south-1.amazonaws.com/tournament-page-assets/BGMI_background.png"});">
-    <Section>
+    <SectionKIT>
       <div class="h-80 w-full py-16 justify-start items-center gap-2.5 inline-flex">
         <div class="grow shrink basis-0 h-48 justify-start items-center gap-2.5 flex">
           <div class="grow shrink basis-0 flex-col justify-start items-start gap-2.5 inline-flex">
@@ -75,7 +75,7 @@ const defaultBannerData = {
           </div>
         </div>
       </div>
-    </Section>
+    </SectionKIT>
   </div>
 {/if}
 

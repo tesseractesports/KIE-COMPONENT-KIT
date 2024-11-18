@@ -1,7 +1,7 @@
 <script>
+  import BannerSectionKit from './components/BannerSectionKIT.svelte';
 	import InfoSectionKIT from './components/InfoSectionKIT.svelte';
-  import BannerSection from "./components/BannerSection.svelte";
 </script>
-  <BannerSection />
-  <InfoSectionKIT />
+<BannerSectionKit />  
+<InfoSectionKIT />
   
