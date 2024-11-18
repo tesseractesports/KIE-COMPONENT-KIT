@@ -1,7 +1,5 @@
 <script>
-  import Section from './TournamentTemplate/Components/Section.svelte';
-import CardSlider from './TournamentTemplate/Components/Sliders/CardSlider.svelte';
-  import { Splide, SplideSlide } from '@splidejs/svelte-splide';
+  import Section from './Section.svelte';
   export let data = {};
 const defaultBannerData = {
     title: "Tournament Name",
