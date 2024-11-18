@@ -7,7 +7,7 @@
     import Summary from "./Summary.svelte";
     import TeamBoard from "./TeamBoard.svelte";
     import Videos from "../PastTournaments/Videos.svelte";
-    import BannerSection from "../../Components/Sliders/BannerSection.svelte";
+    import BannerSection from "../../../BannerSection.svelte";
   
     let meta = router.meta();
     $: currentRoute = $meta.url;

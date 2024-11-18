@@ -1,5 +1,5 @@
 <script>
-	import BannerSection from '../../Components/Sliders/BannerSection.svelte';
+	import BannerSection from '../../../BannerSection.svelte';
     import Section from "../../Components/Section.svelte";
     import HighlightsSlider from "../../Components/Sliders/HighlightsSlider.svelte";
 </script>
