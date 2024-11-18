@@ -17,3 +17,8 @@ export {default as CardSlider} from './src/components/Sliders/CardSlider.svelte'
 export {default as HightlightsSlider} from './src/components/Sliders/HighlightsSlider.svelte';
 export {default as MediaSlider} from './src/components/Sliders/MediaSlider.svelte';
 export {default as InfoSectionKIT} from './src/components/InfoSectionKIT.svelte';
+export {default as Tab} from './src/components/Tabs/Tab.svelte';
+export {default as Tabs} from './src/components/Tabs/Tabs.svelte';
+export {default as TabList} from './src/components/Tabs/TabList.svelte';
+export {default as TabPanel} from './src/components/Tabs/TabPanel.svelte';
+
