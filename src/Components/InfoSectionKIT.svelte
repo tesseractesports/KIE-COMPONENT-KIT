@@ -2,8 +2,8 @@
 	import OverviewKIT from './OverviewKIT.svelte';
 import {Tab, Tabs, TabList, TabPanel } from './Tabs/tabs.js';
     export let data = {};
-    let webconfigObject = JSON.parse(data.websiteConfig);
-    console.log(webconfigObject)
+    // let webconfigObject = JSON.parse(data.websiteConfig);
+    // console.log(webconfigObject)
 </script>
 <Tabs>
     <TabList>
