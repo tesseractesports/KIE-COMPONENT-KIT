@@ -7,4 +7,5 @@ export {default as Tab} from './src/components/Tabs/Tab.svelte';
 export {default as Tabs} from './src/components/Tabs/Tabs.svelte';
 export {default as TabList} from './src/components/Tabs/TabList.svelte';
 export {default as TabPanel} from './src/components/Tabs/TabPanel.svelte';
+export {default as OverviewKIT} from './src/components/OverviewKIT.svelte';
 

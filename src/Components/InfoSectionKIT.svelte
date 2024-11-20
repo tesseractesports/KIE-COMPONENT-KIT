@@ -1,18 +1,35 @@
 <script>
-    import {Tab, Tabs, TabList, TabPanel } from './Tabs/tabs.js';
+	import OverviewKIT from './OverviewKIT.svelte';
+import {Tab, Tabs, TabList, TabPanel } from './Tabs/tabs.js';
+    export let data = {};
+    let webconfigObject = JSON.parse(data.websiteConfig);
+    console.log(webconfigObject)
 </script>
 <Tabs>
     <TabList>
-        <Tab>General</Tab>
-        <Tab>Registrations</Tab>
-        <Tab>In-Game Qualifiers</Tab>
-        <Tab>Open Qualifiers</Tab>
-        <Tab>Grand Finals</Tab>
+        <Tab>Overview</Tab>
+        <Tab>Format</Tab>
+        <Tab>Schedule</Tab>
+        <Tab>Teams</Tab>
+        <Tab>Leaderboard</Tab>
+        <Tab>Videos</Tab>
     </TabList>
     <TabPanel>
-        General
+        <OverviewKIT/>
     </TabPanel>
     <TabPanel>
-        Registrations
+        Format
+    </TabPanel>
+    <TabPanel>
+        Schedule
+    </TabPanel>
+    <TabPanel>
+        Teams
+    </TabPanel>
+    <TabPanel>
+        Leaderboard
+    </TabPanel>
+    <TabPanel>
+        Videos
     </TabPanel>
 </Tabs>
