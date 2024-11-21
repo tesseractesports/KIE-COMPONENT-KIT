@@ -3,5 +3,5 @@
 	import InfoSectionKIT from './components/InfoSectionKIT.svelte';
 </script>
 <BannerSectionKit />  
-<!-- <InfoSectionKIT /> -->
+<InfoSectionKIT />
   
