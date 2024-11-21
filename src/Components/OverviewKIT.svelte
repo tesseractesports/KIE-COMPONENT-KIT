@@ -1,5 +1,6 @@
 <script>
   export let data = {
+    comingSoon:"/assets/images/Coming Soon Section.png",
     tournamentName: "BATTLEGROUNDS MOBILE INDIA Pro Series 2024",
     description: "BATTLEGROUNDS MOBILE INDIA Pro Series 2024, the biggest esports event in India is back. The tournament will feature 128 invited teams, who will battle it out between 20th August to 29th September for the coveted championship title of BMPS 2024. With a total prize pool of 2 Crore INR at stake, who will emerge victorious?",
     eventDetails: {
@@ -40,7 +41,7 @@
     
     <!-- Image for large screens -->
     <div class="hidden lg:flex bg-black/20 rounded-xl justify-center items-center">
-      <img src="/images/Coming Soon Section.png" alt="">
+      <img src="{data.comingSoon}" alt="">
     </div>
 
     <div class="flex-1 flex flex-col gap-10">
@@ -79,7 +80,7 @@
       </div>
 
       <!-- Important Dates Section -->
-      <div class="flex flex-col gap-3">
+      <!-- <div class="flex flex-col gap-3">
         <h2 class="text-amber-400 text-sm font-semibold font-['Inter'] uppercase leading-tight tracking-wide">
           IMPORTANT DATES
         </h2>
@@ -107,7 +108,8 @@
             </div>
           {/each}
         </div>
-      </div>
+      </div> -->
+
     </div>
   </div>
 </div>
