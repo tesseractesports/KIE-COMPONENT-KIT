@@ -1,24 +1,24 @@
-// src/stores/tournamentStore.ts
-import { writable } from 'svelte/store';
+// src/stores/WebConfig.js
+import { writable, get } from 'svelte/store';
 
-const defaultTournamentData = {
+const defaultConfig = {
     banner: {
         title: "IQOO BMPS 2024",
-        description: "The biggest mobile gaming tournament of 2024",
-        logo: "/placeholder/logo.png",
-        background: "/placeholder/banner-bg.jpg",
-        largeBackground: false,
-        largeBackgroundUrl: "",
-        liveChannerUrl: "https://youtube.com/live/example"
+        description: "Welcome to India's Biggest Battlegrounds Mobile India Pro Series",
+        logo: "https://dev-kie-tmp-docs.s3.ap-south-1.amazonaws.com/tournament-page-assets/bgmi-logo.png",
+        background: "https://dev-kie-tmp-docs.s3.ap-south-1.amazonaws.com/tournament-page-assets/bgmi-banner.jpg",
+        largeBackground: true,
+        largeBackgroundUrl: "https://dev-kie-tmp-docs.s3.ap-south-1.amazonaws.com/tournament-page-assets/bgmi-large-banner.jpg",
+        liveChannerUrl: "https://www.youtube.com/BATTLEGROUNDSMOBILEIN"
     },
     info: {
         overview: {
             isEnabled: true,
-            videoTitle: "Tournament Overview",
-            videoUrl: "https://youtube.com/watch?v=example",
-            videoThumbnail: "/placeholder/thumbnail.jpg",
-            aboutTournament: "IQOO BMPS 2024 is the premier mobile gaming tournament featuring top teams from across the region competing for glory and prizes.",
-            startDate: "2024-03-01",
+            videoTitle: "BMPS 2024 Official Trailer",
+            videoUrl: "https://www.youtube.com/watch?v=example-trailer",
+            videoThumbnail: "https://dev-kie-tmp-docs.s3.ap-south-1.amazonaws.com/tournament-page-assets/bgmi-trailer-thumb.jpg",
+            aboutTournament: "BATTLEGROUNDS MOBILE INDIA PRO SERIES (BMPS) 2024 is India's premier BGMI tournament, featuring the top 24 teams competing for glory and a massive prize pool. Experience intense battles, strategic gameplay, and spectacular showdowns as teams fight to be crowned champions.",
+            startDate: "2024-03-15",
             endDate: "2024-04-30",
             totalTeams: "24",
             location: "Mumbai, India"
@@ -27,210 +27,237 @@ const defaultTournamentData = {
             isEnabled: true,
             rounds: [
                 {
-                    roundName: "Qualifiers",
-                    roundDescription: "Open qualifiers where top 32 teams will advance",
-                    startDate: "2024-03-01",
-                    endDate: "2024-03-15"
+                    roundName: "League Play Week 1",
+                    roundDescription: "24 teams compete in round-robin format across 4 groups",
+                    startDate: "2024-03-15",
+                    endDate: "2024-03-20"
                 },
                 {
-                    roundName: "League Stage",
-                    roundDescription: "Round robin format with 4 groups",
-                    startDate: "2024-03-20",
-                    endDate: "2024-04-10"
+                    roundName: "League Play Week 2",
+                    roundDescription: "Top 16 teams advance to intensive battle rounds",
+                    startDate: "2024-03-22",
+                    endDate: "2024-03-27"
                 },
                 {
-                    roundName: "Finals",
-                    roundDescription: "Top 16 teams battle for championship",
-                    startDate: "2024-04-25",
-                    endDate: "2024-04-30"
+                    roundName: "Grand Finals",
+                    roundDescription: "Top 8 teams battle for the championship",
+                    startDate: "2024-03-29",
+                    endDate: "2024-03-31"
                 }
             ]
         },
-        schedule: {
-            isEnabled: true
-        },
-        teams: {
-            isEnabled: true
-        },
-        leaderboard: {
-            isEnabled: true
-        },
+        schedule: { isEnabled: true },
+        teams: { isEnabled: true },
+        leaderboard: { isEnabled: true },
         videos: {
             isEnabled: true,
             videos: [
                 {
-                    videoTitle: "Day 1 Highlights",
-                    videoUrl: "https://youtube.com/watch?v=day1",
-                    videoThumbnail: "/placeholder/day1.jpg"
+                    videoTitle: "BMPS 2024 Team Introductions",
+                    videoUrl: "https://www.youtube.com/watch?v=team-intro",
+                    videoThumbnail: "https://dev-kie-tmp-docs.s3.ap-south-1.amazonaws.com/tournament-page-assets/bgmi-teams-thumb.jpg"
                 },
                 {
-                    videoTitle: "Day 2 Highlights",
-                    videoUrl: "https://youtube.com/watch?v=day2",
-                    videoThumbnail: "/placeholder/day2.jpg"
+                    videoTitle: "Tournament Format Explained",
+                    videoUrl: "https://www.youtube.com/watch?v=format-explain",
+                    videoThumbnail: "https://dev-kie-tmp-docs.s3.ap-south-1.amazonaws.com/tournament-page-assets/bgmi-format-thumb.jpg"
                 }
             ]
         },
-        support: false
+        support: true
     },
     prizePool: {
-        totalPrize: "₹50,00,000",
-        rightCharacter: "/placeholder/character.png",
-        background: "/placeholder/prize-bg.jpg",
+        totalPrize: "₹2,00,00,000",
+        rightCharacter: "https://dev-kie-tmp-docs.s3.ap-south-1.amazonaws.com/tournament-page-assets/bgmi-character.png",
+        background: "https://dev-kie-tmp-docs.s3.ap-south-1.amazonaws.com/tournament-page-assets/prize-pool-bg.jpg",
         prizeDetails: [
             {
-                positionTitle: "1st Place",
+                positionTitle: "Champions",
+                positionPrize: "₹75,00,000"
+            },
+            {
+                positionTitle: "1st Runners Up",
+                positionPrize: "₹35,00,000"
+            },
+            {
+                positionTitle: "2nd Runners Up",
                 positionPrize: "₹20,00,000"
             },
             {
-                positionTitle: "2nd Place",
-                positionPrize: "₹10,00,000"
-            },
-            {
-                positionTitle: "3rd Place",
-                positionPrize: "₹5,00,000"
+                positionTitle: "4th Place",
+                positionPrize: "₹15,00,000"
             }
         ],
         specialRewards: [
             {
-                positionTitle: "MVP of the Tournament",
-                positionPrize: "₹1,00,000"
+                positionTitle: "Tournament MVP",
+                positionPrize: "₹10,00,000"
             },
             {
                 positionTitle: "Best Fragger",
-                positionPrize: "₹50,000"
+                positionPrize: "₹5,00,000"
+            },
+            {
+                positionTitle: "Fan Favorite Team",
+                positionPrize: "₹5,00,000"
             }
         ]
     },
     highlights: [
         {
-            videoTitle: "Tournament Teaser",
-            videoUrl: "https://youtube.com/watch?v=teaser",
-            videoThumbnail: "/placeholder/teaser.jpg"
+            videoTitle: "BMPS 2024 Opening Ceremony",
+            videoUrl: "https://www.youtube.com/watch?v=opening-ceremony",
+            videoThumbnail: "https://dev-kie-tmp-docs.s3.ap-south-1.amazonaws.com/tournament-page-assets/opening-ceremony-thumb.jpg"
         },
         {
-            videoTitle: "Opening Ceremony",
-            videoUrl: "https://youtube.com/watch?v=opening",
-            videoThumbnail: "/placeholder/opening.jpg"
+            videoTitle: "Day 1 Highlights",
+            videoUrl: "https://www.youtube.com/watch?v=day1-highlights",
+            videoThumbnail: "https://dev-kie-tmp-docs.s3.ap-south-1.amazonaws.com/tournament-page-assets/day1-highlights-thumb.jpg"
+        },
+        {
+            videoTitle: "Top 10 Plays",
+            videoUrl: "https://www.youtube.com/watch?v=top-plays",
+            videoThumbnail: "https://dev-kie-tmp-docs.s3.ap-south-1.amazonaws.com/tournament-page-assets/top-plays-thumb.jpg"
         }
     ],
     theme: {
-        name: "Default",
-        key: "DEFAULT",
+        name: "BGMI Dark",
+        key: "BGMI_DARK",
         colors: {
-            background: "#ffffff",
-            foreground: "#000000",
-            primary: "#ff0000",
-            secondary: "#ff5f00",
-            tertiary: "#ff0000",
-            quaternary: "#859900"
+            background: "#0A0A0A",
+            foreground: "#FFFFFF",
+            primary: "#FFB800",
+            secondary: "#FF4B4B",
+            tertiary: "#00C5FF",
+            quaternary: "#44D62C"
         }
     }
 };
 
-function createTournamentStore() {
-    const { subscribe, set, update } = writable(defaultTournamentData);
+export const CONFIG_PATHS = {
+    ROUNDS: 'info.format.rounds',
+    VIDEOS: 'info.videos.videos',
+    PRIZE_DETAILS: 'prizePool.prizeDetails',
+    SPECIAL_REWARDS: 'prizePool.specialRewards',
+    HIGHLIGHTS: 'highlights'
+};
+
+export const CONFIG_TEMPLATES = {
+    [CONFIG_PATHS.ROUNDS]: {
+        roundName: "New Round",
+        roundDescription: "",
+        startDate: "",
+        endDate: ""
+    },
+    [CONFIG_PATHS.VIDEOS]: {
+        videoTitle: "New Video",
+        videoUrl: "",
+        videoThumbnail: ""
+    },
+    [CONFIG_PATHS.PRIZE_DETAILS]: {
+        positionTitle: "New Position",
+        positionPrize: "₹0"
+    },
+    [CONFIG_PATHS.SPECIAL_REWARDS]: {
+        positionTitle: "New Reward",
+        positionPrize: "₹0"
+    },
+    [CONFIG_PATHS.HIGHLIGHTS]: {
+        videoTitle: "New Highlight",
+        videoUrl: "",
+        videoThumbnail: ""
+    }
+};
+
+export const CONFIG_SECTIONS = {
+    BANNER: 'banner',
+    INFO: 'info',
+    PRIZE_POOL: 'prizePool',
+    HIGHLIGHTS: 'highlights',
+    THEME: 'theme'
+};
+
+function createWebConfig() {
+    const store = writable(defaultConfig);
+    
+    const { subscribe, set, update } = store;
 
     return {
         subscribe,
-        // Reset to default values
-        reset: () => set(defaultTournamentData),
-        // Update entire form
-        setForm: (data) => set(data),
-        // Update specific section
-        updateSection: (section, data) => {
-            update(store => ({
-                ...store,
-                [section]: { ...store[section], ...data }
-            }));
-        },
-        // Add new round to format
-        addRound: () => {
-            update(store => ({
-                ...store,
-                info: {
-                    ...store.info,
-                    format: {
-                        ...store.info.format,
-                        rounds: [
-                            ...store.info.format.rounds,
-                            {
-                                roundName: "",
-                                roundDescription: "",
-                                startDate: "",
-                                endDate: ""
-                            }
-                        ]
-                    }
+        set,
+        update,
+        updateFromApi: (apiData) => {
+            try {
+                let config;
+                if (!apiData) {
+                    config = defaultConfig;
+                } else if (typeof apiData.websiteConfig === 'string') {
+                    config = JSON.parse(apiData.websiteConfig);
+                } else {
+                    config = apiData.websiteConfig || defaultConfig;
                 }
-            }));
+                
+                set({ ...defaultConfig, ...config });
+            } catch (error) {
+                console.error('Error parsing config:', error);
+                set(defaultConfig);
+            }
         },
-        // Add new video
-        addVideo: () => {
-            update(store => ({
-                ...store,
-                info: {
-                    ...store.info,
-                    videos: {
-                        ...store.info.videos,
-                        videos: [
-                            ...store.info.videos.videos,
-                            {
-                                videoTitle: "",
-                                videoUrl: "",
-                                videoThumbnail: ""
-                            }
-                        ]
-                    }
+        reset: () => set(defaultConfig),
+        updateSection: (path, value) => {
+            update(store => {
+                const newStore = { ...store };
+                const pathArray = path.split('.');
+                let current = newStore;
+
+                for (let i = 0; i < pathArray.length - 1; i++) {
+                    current = current[pathArray[i]];
                 }
-            }));
+
+                current[pathArray[pathArray.length - 1]] = value;
+                return newStore;
+            });
         },
-        // Add new prize detail
-        addPrizeDetail: () => {
-            update(store => ({
-                ...store,
-                prizePool: {
-                    ...store.prizePool,
-                    prizeDetails: [
-                        ...store.prizePool.prizeDetails,
-                        {
-                            positionTitle: "",
-                            positionPrize: ""
-                        }
-                    ]
+        addArrayItem: (path) => {
+            update(store => {
+                const newStore = { ...store };
+                const pathArray = path.split('.');
+                let current = newStore;
+
+                for (let i = 0; i < pathArray.length - 1; i++) {
+                    current = current[pathArray[i]];
                 }
-            }));
-        },
-        // Add new special reward
-        addSpecialReward: () => {
-            update(store => ({
-                ...store,
-                prizePool: {
-                    ...store.prizePool,
-                    specialRewards: [
-                        ...store.prizePool.specialRewards,
-                        {
-                            positionTitle: "",
-                            positionPrize: ""
-                        }
-                    ]
+
+                const arrayKey = pathArray[pathArray.length - 1];
+                const template = CONFIG_TEMPLATES[path] || {};
+                
+                if (Array.isArray(current[arrayKey])) {
+                    current[arrayKey].push({ ...template });
                 }
-            }));
+
+                return newStore;
+            });
         },
-        // Add new highlight
-        addHighlight: () => {
-            update(store => ({
-                ...store,
-                highlights: [
-                    ...store.highlights,
-                    {
-                        videoTitle: "",
-                        videoUrl: "",
-                        videoThumbnail: ""
-                    }
-                ]
-            }));
-        }
+        removeArrayItem: (path, index) => {
+            update(store => {
+                const newStore = { ...store };
+                const pathArray = path.split('.');
+                let current = newStore;
+
+                for (let i = 0; i < pathArray.length - 1; i++) {
+                    current = current[pathArray[i]];
+                }
+
+                const arrayKey = pathArray[pathArray.length - 1];
+                if (Array.isArray(current[arrayKey])) {
+                    current[arrayKey].splice(index, 1);
+                }
+
+                return newStore;
+            });
+        },
+        getCurrentConfig: () => get(store)  // Using Svelte's get helper
     };
 }
 
-export const tournamentStore = createTournamentStore();
+export const webConfig = createWebConfig();

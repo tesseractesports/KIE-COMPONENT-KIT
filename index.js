@@ -9,3 +9,9 @@ export {default as TabList} from './src/components/Tabs/TabList.svelte';
 export {default as TabPanel} from './src/components/Tabs/TabPanel.svelte';
 export {default as OverviewKIT} from './src/components/OverviewKIT.svelte';
 export {THEMES, ThemeConfig, THEME_LIST} from './src/stores/ThemeConfig';
+export {
+    webConfig,
+    CONFIG_PATHS,
+    CONFIG_TEMPLATES,
+    CONFIG_SECTIONS
+} from './src/stores/webConfig';
