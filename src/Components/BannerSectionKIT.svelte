@@ -1,34 +1,27 @@
 <script>
   import { writable } from 'svelte/store';
   import SectionKIT from './SectionKIT.svelte';
-  import {ThemeConfig} from '../stores/ThemeConfig';
-  export let data = {};
-const defaultBannerData = {
-    title: "Tournament Name",
-    description: "No description available",
-    logo: "https://defaultlogo.url/logo.png",
-    backgroundUrl: "https://dev-kie-tmp-docs.s3.ap-south-1.amazonaws.com/tournament-page-assets/BGMI_background.png",
-    isLargeBackground: false,
-    largeBackgroundUrl: "https://dev-kie-tmp-docs.s3.ap-south-1.amazonaws.com/tournament-page-assets/BGMI_background.png",
-    liveChannerUrl: "#",
-  };
+  import { ThemeConfig } from '../stores/ThemeConfig';
+  import { webConfig } from '../stores/webConfig';
 
-  // Use fallback values if `data.banner` or any of its properties are undefined
-  const bannerData = {
-    title: data?.banner?.title || defaultBannerData.title,
-    description: data?.banner?.description || defaultBannerData.description,
-    logo: data?.banner?.logo || defaultBannerData.logo,
-    backgroundUrl: data?.banner?.background || defaultBannerData.backgroundUrl,
-    isLargeBackground: data?.banner?.largeBackground || defaultBannerData.isLargeBackground,
-    largeBackgroundUrl: data?.banner?.largeBackgroundUrl || defaultBannerData.largeBackgroundUrl,
-    button1: { text: "Watch Live", url: data?.banner?.liveChannerUrl || defaultBannerData.liveChannerUrl },
-    button2: { text: "Tournament details", url: "#info" }
-  };
-
-  
-    
+    $: bannerData = {
+        title: $webConfig?.banner?.title,
+        description: $webConfig?.banner?.description,
+        logo: $webConfig?.banner?.logo,
+        backgroundUrl: $webConfig?.banner?.background,
+        isLargeBackground: $webConfig?.banner?.largeBackground,
+        largeBackgroundUrl: $webConfig?.banner?.largeBackgroundUrl,
+        button1: { 
+            text: "Watch Live", 
+            url: $webConfig?.banner?.liveChannerUrl
+        },
+        button2: { 
+            text: "Tournament details", 
+            url: "#info" 
+        }
+    };
 </script>
-{#if !bannerData.isLargeBackground}
+{#if bannerData.isLargeBackground}
   <div class="main-bg bg-cover" style="background-image: url({bannerData.largeBackgroundUrl ? bannerData.largeBackgroundUrl : "https://dev-kie-tmp-docs.s3.ap-south-1.amazonaws.com/tournament-page-assets/BGMI_background.png"});">
     <SectionKIT>
       <div class="flex items-start w-full">
