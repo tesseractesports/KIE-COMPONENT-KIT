@@ -27,6 +27,8 @@
       }
     ]
   };
+
+  console.log(data)
 </script>
 
 <div class="lg:hidden w-full h-[184px]">

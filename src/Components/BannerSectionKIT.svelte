@@ -1,5 +1,7 @@
 <script>
+  import { writable } from 'svelte/store';
   import SectionKIT from './SectionKIT.svelte';
+  import {ThemeConfig} from '../stores/ThemeConfig';
   export let data = {};
 const defaultBannerData = {
     title: "Tournament Name",
@@ -22,9 +24,11 @@ const defaultBannerData = {
     button1: { text: "Watch Live", url: data?.banner?.liveChannerUrl || defaultBannerData.liveChannerUrl },
     button2: { text: "Tournament details", url: "#info" }
   };
+
+  
     
 </script>
-{#if bannerData.isLargeBackground}
+{#if !bannerData.isLargeBackground}
   <div class="main-bg bg-cover" style="background-image: url({bannerData.largeBackgroundUrl ? bannerData.largeBackgroundUrl : "https://dev-kie-tmp-docs.s3.ap-south-1.amazonaws.com/tournament-page-assets/BGMI_background.png"});">
     <SectionKIT>
       <div class="flex items-start w-full">
@@ -33,7 +37,7 @@ const defaultBannerData = {
             <div class="z-0 flex flex-col justify-end gap-y-4 bg-cover bg-center pb-16 lg:pb-28 pt-[320px] lg:pt-[420px] w-f">
               <img src={bannerData.logo} alt="" class="z-10 h-[120px] w-24 flex-shrink-0">
               <div class="flex items-end pt-2">
-                <div class="font-manrope flex-grow text-[56px] font-extrabold leading-[normal] text-yellow-400">
+                <div class="font-manrope flex-grow text-[56px] font-extrabold leading-[normal] text-['{$ThemeConfig.colors.primary}']" style="color: {$ThemeConfig.colors.primary}">
                   {bannerData.title}
                 </div>
               </div>
@@ -50,7 +54,7 @@ const defaultBannerData = {
                       </span>
                     <div class="text-[silver]">{bannerData.button1.text}</div>
                   </a>
-                  <a href="" class="rounded-md bg-yellow-400 px-3 py-2 text-center text-neutral-900 drop-shadow-lg">
+                  <a href={bannerData.button1.url} class="rounded-md bg-yellow-400 px-3 py-2 text-center text-neutral-900 drop-shadow-lg">
                     {bannerData.button2.text}
                   </a>
                 </div>
