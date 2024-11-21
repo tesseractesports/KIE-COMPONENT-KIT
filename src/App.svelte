@@ -5,17 +5,16 @@
   import SectionKit from './components/SectionKIT.svelte';
 </script>
 <BannerSectionKit />  
-<!-- <InfoSectionKIT /> -->
-
+<InfoSectionKIT />
 <div class="bg-gray-800">
   <LeaderBoardKit/>
 </div>
-
 <div class="bg-Charcoal/900 ">
   <SectionKit>
     <OverviewKit/>
   </SectionKit>
 </div>
+
 
 
   
