@@ -8,10 +8,6 @@ export {default as Tabs} from './src/components/Tabs/Tabs.svelte';
 export {default as TabList} from './src/components/Tabs/TabList.svelte';
 export {default as TabPanel} from './src/components/Tabs/TabPanel.svelte';
 export {default as OverviewKIT} from './src/components/OverviewKIT.svelte';
+export {default as PrizepoolKIT} from './src/Components/PrizepoolKIT.svelte';
 export {THEMES, ThemeConfig, THEME_LIST} from './src/stores/ThemeConfig';
-export {
-    webConfig,
-    CONFIG_PATHS,
-    CONFIG_TEMPLATES,
-    CONFIG_SECTIONS
-} from './src/stores/webConfig';
+export {webConfig, CONFIG_PATHS, CONFIG_TEMPLATES, CONFIG_SECTIONS} from './src/stores/webConfig';
