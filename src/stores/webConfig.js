@@ -1,138 +1,152 @@
 // src/stores/WebConfig.js
 import { writable, get } from 'svelte/store';
+import { ThemeConfig, THEMES } from './ThemeConfig';
+
+let currentTheme = ThemeConfig;
+function getPlaceholder(width, height, type = 'primary') {
+    currentTheme = get(ThemeConfig) || THEMES.DEFAULT;
+    const bgColor = currentTheme.colors.background.replace('#', '');
+    const color = currentTheme.colors[type].replace('#', '');
+    return `https://via.placeholder.com/${width}x${height}/${color}/${bgColor}`;
+}
 
 const defaultConfig = {
     banner: {
-        title: "IQOO BMPS 2024",
-        description: "Welcome to India's Biggest Battlegrounds Mobile India Pro Series",
-        logo: "https://dev-kie-tmp-docs.s3.ap-south-1.amazonaws.com/tournament-page-assets/bgmi-logo.png",
-        background: "https://dev-kie-tmp-docs.s3.ap-south-1.amazonaws.com/tournament-page-assets/bgmi-banner.jpg",
-        largeBackground: true,
-        largeBackgroundUrl: "https://dev-kie-tmp-docs.s3.ap-south-1.amazonaws.com/tournament-page-assets/bgmi-large-banner.jpg",
-        liveChannerUrl: "https://www.youtube.com/BATTLEGROUNDSMOBILEIN"
+        title: "Title Here",
+        description: "Welcome to the tournament. ",
+        logo: getPlaceholder(240, 240, 'primary'),
+        background: getPlaceholder(1080, 380, 'primary'),
+        largeBackground: false,
+        largeBackgroundUrl: getPlaceholder(1920, 480, 'primary'),
+        liveChannerUrl: ""
     },
     info: {
         overview: {
             isEnabled: true,
-            videoTitle: "BMPS 2024 Official Trailer",
-            videoUrl: "https://www.youtube.com/watch?v=example-trailer",
-            videoThumbnail: "https://dev-kie-tmp-docs.s3.ap-south-1.amazonaws.com/tournament-page-assets/bgmi-trailer-thumb.jpg",
-            aboutTournament: "BATTLEGROUNDS MOBILE INDIA PRO SERIES (BMPS) 2024 is India's premier BGMI tournament, featuring the top 24 teams competing for glory and a massive prize pool. Experience intense battles, strategic gameplay, and spectacular showdowns as teams fight to be crowned champions.",
-            startDate: "2024-03-15",
-            endDate: "2024-04-30",
-            totalTeams: "24",
-            location: "Mumbai, India"
+            videoTitle: "Tournament Overview",
+            videoUrl: "",
+            videoThumbnail: getPlaceholder(1280, 720, 'secondary'),
+            aboutTournament: "Add detailed information about your tournament here. Include key highlights and what makes this tournament special.",
+            startDate: "",
+            endDate: "",
+            totalTeams: "",
+            location: "Location to be announced"
         },
         format: {
             isEnabled: true,
             rounds: [
                 {
-                    roundName: "League Play Week 1",
-                    roundDescription: "24 teams compete in round-robin format across 4 groups",
-                    startDate: "2024-03-15",
-                    endDate: "2024-03-20"
-                },
-                {
-                    roundName: "League Play Week 2",
-                    roundDescription: "Top 16 teams advance to intensive battle rounds",
-                    startDate: "2024-03-22",
-                    endDate: "2024-03-27"
-                },
-                {
-                    roundName: "Grand Finals",
-                    roundDescription: "Top 8 teams battle for the championship",
-                    startDate: "2024-03-29",
-                    endDate: "2024-03-31"
+                    roundName: "Qualification Round",
+                    roundDescription: "Initial round description and format details",
+                    startDate: "",
+                    endDate: ""
                 }
             ]
         },
-        schedule: { isEnabled: true },
-        teams: { isEnabled: true },
-        leaderboard: { isEnabled: true },
+        schedule: {
+            isEnabled: true
+        },
+        teams: {
+            isEnabled: true,
+            teams: [
+                {
+                    name: "Team Name",
+                    logo: getPlaceholder(160, 160, 'tertiary'),
+                    players: [
+                        {
+                            name: "Player Name",
+                            avatar: getPlaceholder(120, 120, 'tertiary')
+                        }
+                    ]
+                }
+            ]
+        },
+        leaderboard: {
+            isEnabled: true,
+            filterOptions: {
+                Round: ["Round 1"],
+                Day: ["Day 1"],
+                Group: ["Group A"]
+            },
+            head: [
+                "Rank",
+                "Team",
+                "Group",
+                "Matches",
+                "Points",
+                "Status"
+            ],
+            rows: [
+                {
+                    startingRank: 1,
+                    team: {
+                        name: "Team Name",
+                        logo: getPlaceholder(80, 80, 'tertiary')
+                    },
+                    group: "Group A",
+                    matches: 0,
+                    points: 0,
+                    status: "Qualified"
+                }
+            ]
+        },
         videos: {
             isEnabled: true,
             videos: [
                 {
-                    videoTitle: "BMPS 2024 Team Introductions",
-                    videoUrl: "https://www.youtube.com/watch?v=team-intro",
-                    videoThumbnail: "https://dev-kie-tmp-docs.s3.ap-south-1.amazonaws.com/tournament-page-assets/bgmi-teams-thumb.jpg"
+                    videoTitle: "Tournament Announcement",
+                    videoUrl: "",
+                    videoThumbnail: getPlaceholder(640, 360, 'secondary'),
+                    description: "Official tournament announcement and details",
+                    duration: "",
+                    uploadDate: ""
                 },
                 {
-                    videoTitle: "Tournament Format Explained",
-                    videoUrl: "https://www.youtube.com/watch?v=format-explain",
-                    videoThumbnail: "https://dev-kie-tmp-docs.s3.ap-south-1.amazonaws.com/tournament-page-assets/bgmi-format-thumb.jpg"
+                    videoTitle: "Tournament Format",
+                    videoUrl: "",
+                    videoThumbnail: getPlaceholder(640, 360, 'secondary'),
+                    description: "Learn about the tournament structure and format",
+                    duration: "",
+                    uploadDate: ""
                 }
             ]
         },
-        support: true
+        support: false
     },
     prizePool: {
-        totalPrize: "₹2,00,00,000",
-        rightCharacter: "https://dev-kie-tmp-docs.s3.ap-south-1.amazonaws.com/tournament-page-assets/bgmi-character.png",
-        background: "https://dev-kie-tmp-docs.s3.ap-south-1.amazonaws.com/tournament-page-assets/prize-pool-bg.jpg",
+        totalPrize: "Prize pool to be announced",
+        rightCharacter: getPlaceholder(600, 800, 'quaternary'),
+        background: getPlaceholder(1920, 800, 'primary'),
         prizeDetails: [
             {
-                positionTitle: "Champions",
-                positionPrize: "₹75,00,000"
+                positionTitle: "First Place",
+                positionPrize: "TBA",
+                icon: getPlaceholder(100, 100, 'primary')
             },
             {
-                positionTitle: "1st Runners Up",
-                positionPrize: "₹35,00,000"
-            },
-            {
-                positionTitle: "2nd Runners Up",
-                positionPrize: "₹20,00,000"
-            },
-            {
-                positionTitle: "4th Place",
-                positionPrize: "₹15,00,000"
+                positionTitle: "Second Place",
+                positionPrize: "TBA",
+                icon: getPlaceholder(100, 100, 'secondary')
             }
         ],
         specialRewards: [
             {
-                positionTitle: "Tournament MVP",
-                positionPrize: "₹10,00,000"
-            },
-            {
-                positionTitle: "Best Fragger",
-                positionPrize: "₹5,00,000"
-            },
-            {
-                positionTitle: "Fan Favorite Team",
-                positionPrize: "₹5,00,000"
+                positionTitle: "Special Award",
+                positionPrize: "TBA",
+                icon: getPlaceholder(100, 100, 'tertiary')
             }
         ]
     },
     highlights: [
         {
-            videoTitle: "BMPS 2024 Opening Ceremony",
-            videoUrl: "https://www.youtube.com/watch?v=opening-ceremony",
-            videoThumbnail: "https://dev-kie-tmp-docs.s3.ap-south-1.amazonaws.com/tournament-page-assets/opening-ceremony-thumb.jpg"
-        },
-        {
-            videoTitle: "Day 1 Highlights",
-            videoUrl: "https://www.youtube.com/watch?v=day1-highlights",
-            videoThumbnail: "https://dev-kie-tmp-docs.s3.ap-south-1.amazonaws.com/tournament-page-assets/day1-highlights-thumb.jpg"
-        },
-        {
-            videoTitle: "Top 10 Plays",
-            videoUrl: "https://www.youtube.com/watch?v=top-plays",
-            videoThumbnail: "https://dev-kie-tmp-docs.s3.ap-south-1.amazonaws.com/tournament-page-assets/top-plays-thumb.jpg"
+            videoTitle: "Tournament Highlights",
+            videoUrl: "",
+            videoThumbnail: getPlaceholder(640, 360, 'secondary')
         }
     ],
-    theme: {
-        name: "BGMI Dark",
-        key: "BGMI_DARK",
-        colors: {
-            background: "#0A0A0A",
-            foreground: "#FFFFFF",
-            primary: "#FFB800",
-            secondary: "#FF4B4B",
-            tertiary: "#00C5FF",
-            quaternary: "#44D62C"
-        }
-    }
+    theme: currentTheme
 };
+
 
 export const CONFIG_PATHS = {
     ROUNDS: 'info.format.rounds',

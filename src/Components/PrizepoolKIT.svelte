@@ -1,78 +1,141 @@
-<div class="py-10 md:py-20 flex flex-col gap-5">
-    <!-- Total Prize Pool Section -->
-    <div class="relative bg-white rounded-lg h-[104px] md:h-[210px]">
-      <img src="/images/image 38.png" alt="" class="absolute inset-0 w-full h-full object-cover rounded-lg">
-      <div class="absolute inset-0 bg-black/40 rounded-lg"></div>
-      <div class="absolute top-1/2 transform -translate-y-1/2 px-6 md:left-[42px] flex flex-col items-center md:items-start gap-1 md:gap-3">
-        <div class="text-white text-xs md:text-base font-semibold uppercase tracking-wide">TOTAL PRIZE POOL</div>
-        <div class="text-white text-3xl md:text-7xl font-extrabold">₹2,00,00,000</div>
-      </div>
-      <img class="hidden md:block absolute top-0 right-0 " src="/images/helmet.png" alt=""/>
-    </div>
+<script>
+	import SectionKIT from './SectionKIT.svelte';
+  import { webConfig } from '../stores/webConfig.js';
+  import { ThemeConfig } from '../stores/ThemeConfig.js';
   
-    <!-- Positions Section -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-      <!-- 1st Position, full width on mobile -->
-      <div class="p-4 md:p-6 bg-[#151515] rounded-xl border border-[#1d1d1d] text-center md:text-left col-span-1">
-        <div class="text-[#888888] text-xs md:text-base font-semibold uppercase tracking-wide">1st Position</div>
-        <div class="text-white text-2xl md:text-5xl font-extrabold">₹40,00,000</div>
-      </div>
-      <!-- Remaining Positions in two columns on mobile -->
-      <div class="grid grid-cols-2 gap-5 col-span-1 md:col-span-2">
-        <div class="p-4 md:p-6 bg-[#151515] rounded-xl border border-[#1d1d1d] text-center md:text-left">
-          <div class="text-[#888888] text-xs md:text-base font-semibold uppercase tracking-wide">2nd Position</div>
-          <div class="text-white text-2xl md:text-5xl font-extrabold">₹20,00,000</div>
+  $: prizePool = $webConfig?.prizePool;
+  $: theme = $ThemeConfig;
+
+  // Helper function to generate gradient background style
+  $: gradientStyle = `
+      background-color: ${theme.colors.primary};
+      background-image: linear-gradient(135deg, ${theme.colors.primary}, ${theme.colors.secondary});
+  `;
+</script>
+
+<SectionKIT>
+  <div class="flex flex-col gap-6">
+    <!-- Total Prize Pool Banner -->
+    <div class="relative w-full h-[180px] rounded-xl overflow-hidden">
+        <!-- Background with Theme Color -->
+        <div 
+            class="absolute inset-0 bg-pattern"
+            style={gradientStyle}
+        ></div>
+  
+        <!-- Content -->
+        <div class="relative z-10 h-full flex flex-col justify-center px-8">
+            <div class="text-sm font-medium uppercase tracking-wider mb-2"
+                 style:color={theme.colors.background}>
+                TOTAL PRIZE POOL
+            </div>
+            <div class="text-5xl font-bold"
+                 style:color={theme.colors.background}>
+                {prizePool?.totalPrize || "₹2,00,00,000"}
+            </div>
         </div>
-        <div class="p-4 md:p-6 bg-[#151515] rounded-xl border border-[#1d1d1d] text-center md:text-left">
-          <div class="text-[#888888] text-xs md:text-base font-semibold uppercase tracking-wide">3rd Position</div>
-          <div class="text-white text-2xl md:text-5xl font-extrabold">₹10,00,000</div>
+  
+        <!-- Character/Helmet Image -->
+        <img 
+            src={prizePool?.rightCharacter || "https://via.placeholder.com/300x300"}
+            alt="Prize Pool Character"
+            class="absolute right-4 top-1/2 -translate-y-1/2 h-36 object-contain"
+        />
+    </div>
+  
+    <!-- Top 3 Positions -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {#each prizePool?.prizeDetails.slice(0, 3) || [] as prize, index}
+            <div 
+                class="rounded-xl p-6 transition-all duration-300 hover:-translate-y-1"
+                style:background-color={theme.colors.background}
+                style:border={`1px solid ${theme.colors.foreground}22`}
+            >
+                <div 
+                    class="text-sm font-medium uppercase tracking-wider mb-2"
+                    style:color={`${theme.colors.foreground}88`}
+                >
+                    {prize.positionTitle || `${index + 1}${index === 0 ? 'ST' : index === 1 ? 'ND' : 'RD'} POSITION`}
+                </div>
+                <div 
+                    class="text-3xl font-bold"
+                    style:color={index === 0 ? theme.colors.primary : theme.colors.secondary}
+                >
+                    {prize.positionPrize}
+                </div>
+            </div>
+        {/each}
+    </div>
+  
+    <!-- Other Positions -->
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+        {#each prizePool?.prizeDetails.slice(3) || [] as prize}
+            <div 
+                class="rounded-xl p-4 transition-all duration-300 hover:-translate-y-1"
+                style:background-color={theme.colors.background}
+                style:border={`1px solid ${theme.colors.foreground}22`}
+            >
+                <div 
+                    class="text-sm font-medium uppercase tracking-wider mb-2"
+                    style:color={`${theme.colors.foreground}88`}
+                >
+                    {prize.positionTitle}
+                </div>
+                <div 
+                    class="text-xl font-bold"
+                    style:color={theme.colors.tertiary}
+                >
+                    {prize.positionPrize}
+                </div>
+            </div>
+        {/each}
+    </div>
+  
+    <!-- Special Rewards -->
+    <div class="mt-4">
+        <div 
+            class="text-sm font-medium uppercase tracking-wider mb-4 text-center"
+            style:color={theme.colors.primary}
+        >
+            SPECIAL REWARDS
         </div>
-      </div>
-    </div>
-  
-    <!-- Additional Position Rewards -->
-    <div class="grid grid-cols-2 md:grid-cols-5 gap-5">
-      <div class="p-4 md:p-6 bg-[#151515] rounded-xl border border-[#1d1d1d] text-center md:text-left">
-        <div class="text-[#888888] text-xs md:text-base font-semibold uppercase tracking-wide">4th Position</div>
-        <div class="text-white text-lg md:text-3xl font-extrabold">₹5,00,000</div>
-      </div>
-      <div class="p-4 md:p-6 bg-[#151515] rounded-xl border border-[#1d1d1d] text-center md:text-left">
-        <div class="text-[#888888] text-xs md:text-base font-semibold uppercase tracking-wide">5th & 6th</div>
-        <div class="text-white text-lg md:text-3xl font-extrabold">₹3,00,000</div>
-      </div>
-      <div class="p-4 md:p-6 bg-[#151515] rounded-xl border border-[#1d1d1d] text-center md:text-left">
-        <div class="text-[#888888] text-xs md:text-base font-semibold uppercase tracking-wide">7th & 8th</div>
-        <div class="text-white text-lg md:text-3xl font-extrabold">₹2,00,000</div>
-      </div>
-      <div class="p-4 md:p-6 bg-[#151515] rounded-xl border border-[#1d1d1d] text-center md:text-left">
-        <div class="text-[#888888] text-xs md:text-base font-semibold uppercase tracking-wide">9th - 12th</div>
-        <div class="text-white text-lg md:text-3xl font-extrabold">₹1,50,000</div>
-      </div>
-      <div class="p-4 md:p-6 bg-[#151515] rounded-xl border border-[#1d1d1d] text-center md:text-left">
-        <div class="text-[#888888] text-xs md:text-base font-semibold uppercase tracking-wide">13th - 16th</div>
-        <div class="text-white text-lg md:text-3xl font-extrabold">₹1,00,000</div>
-      </div>
-    </div>
-  
-    <!-- Special Rewards Section -->
-    <div class="text-amber-400 text-center text-base font-semibold uppercase tracking-wide mt-5">Special Rewards</div>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-5 mt-3">
-      <div class="p-4 md:p-6 bg-[#151515] rounded-xl border border-[#1d1d1d] text-center md:text-left">
-        <div class="text-[#888888] text-xs md:text-base font-semibold uppercase tracking-wide">MVP</div>
-        <div class="text-white text-xl md:text-4xl font-extrabold">₹4,00,000</div>
-      </div>
-      <div class="p-4 md:p-6 bg-[#151515] rounded-xl border border-[#1d1d1d] text-center md:text-left">
-        <div class="text-[#888888] text-xs md:text-base font-semibold uppercase tracking-wide">Best IGL</div>
-        <div class="text-white text-xl md:text-4xl font-extrabold">₹2,00,000</div>
-      </div>
-      <div class="p-4 md:p-6 bg-[#151515] rounded-xl border border-[#1d1d1d] text-center md:text-left">
-        <div class="text-[#888888] text-xs md:text-base font-semibold uppercase tracking-wide">Emerging Star</div>
-        <div class="text-white text-xl md:text-4xl font-extrabold">₹1,00,000</div>
-      </div>
-      <div class="p-4 md:p-6 bg-[#151515] rounded-xl border border-[#1d1d1d] text-center md:text-left">
-        <div class="text-[#888888] text-xs md:text-base font-semibold uppercase tracking-wide">Fan Favorite</div>
-        <div class="text-white text-xl md:text-4xl font-extrabold">₹50,000</div>
-      </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {#each prizePool?.specialRewards || [] as reward}
+                <div 
+                    class="rounded-xl p-4 transition-all duration-300 hover:-translate-y-1"
+                    style:background-color={theme.colors.background}
+                    style:border={`1px solid ${theme.colors.foreground}22`}
+                >
+                    <div 
+                        class="text-sm font-medium uppercase tracking-wider mb-2"
+                        style:color={`${theme.colors.foreground}88`}
+                    >
+                        {reward.positionTitle}
+                    </div>
+                    <div 
+                        class="text-2xl font-bold"
+                        style:color={theme.colors.quaternary}
+                    >
+                        {reward.positionPrize}
+                    </div>
+                </div>
+            {/each}
+        </div>
     </div>
   </div>
-  
+</SectionKIT>
+
+
+<style>
+  .bg-pattern {
+      background-size: 30px 30px;
+      background-image: 
+          linear-gradient(to right, rgba(255,255,255,0.1) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(255,255,255,0.1) 1px, transparent 1px);
+  }
+
+  /* Smooth transitions for theme changes */
+  div {
+      transition: all 0.3s ease;
+  }
+</style>
