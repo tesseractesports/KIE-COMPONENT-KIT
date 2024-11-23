@@ -12,11 +12,11 @@
       background-image: linear-gradient(135deg, ${theme.colors.primary}, ${theme.colors.secondary});
   `;
 </script>
-
 <SectionKIT>
-  <div class="flex flex-col gap-6">
+
+  <div class="flex flex-col gap-3 px-2 ">
     <!-- Total Prize Pool Banner -->
-    <div class="relative w-full h-[180px] rounded-xl overflow-hidden">
+    <div class="relative w-full h-[180px] rounded-xl overflow-hidden mt-4">
         <!-- Background with Theme Color -->
         <div 
             class="absolute inset-0 bg-pattern"
@@ -24,12 +24,12 @@
         ></div>
   
         <!-- Content -->
-        <div class="relative z-10 h-full flex flex-col justify-center px-8">
+        <div class="relative z-10 h-full flex flex-col justify-center lg:px-8 lg:justify-center lg:items-start items-center text-center">
             <div class="text-sm font-medium uppercase tracking-wider mb-2"
                  style:color={theme.colors.background}>
                 TOTAL PRIZE POOL
             </div>
-            <div class="text-5xl font-bold"
+            <div class="text-4xl font-bold"
                  style:color={theme.colors.background}>
                 {prizePool?.totalPrize || "₹2,00,00,000"}
             </div>
@@ -39,12 +39,12 @@
         <img 
             src={prizePool?.rightCharacter || "https://via.placeholder.com/300x300"}
             alt="Prize Pool Character"
-            class="absolute right-4 top-1/2 -translate-y-1/2 h-36 object-contain"
+            class="absolute right-4 top-1/2 -translate-y-1/2 h-36 object-contain hidden lg:block "
         />
     </div>
   
     <!-- Top 3 Positions -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
         {#each prizePool?.prizeDetails.slice(0, 3) || [] as prize, index}
             <div 
                 class="rounded-xl p-6 transition-all duration-300 hover:-translate-y-1"
@@ -68,7 +68,7 @@
     </div>
   
     <!-- Other Positions -->
-    <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-2">
         {#each prizePool?.prizeDetails.slice(3) || [] as prize}
             <div 
                 class="rounded-xl p-4 transition-all duration-300 hover:-translate-y-1"
@@ -94,10 +94,11 @@
     <!-- Special Rewards -->
     <div class="mt-4">
         <div 
-            class="text-sm font-medium uppercase tracking-wider mb-4 text-center"
+            class="text-sm font-medium uppercase tracking-wider mb-4 text-start px-2"
             style:color={theme.colors.primary}
         >
             SPECIAL REWARDS
+            <div class="flex-grow border-b"></div>
         </div>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
             {#each prizePool?.specialRewards || [] as reward}
