@@ -6,9 +6,12 @@
   import OverviewKit from './components/OverviewKIT.svelte';
   import SectionKit from './components/SectionKIT.svelte';
 </script>
-<BannerSectionKit />  
-<InfoSectionKIT />
-<PrizepoolKIT />
+<div class=" bg-Charcoal/900">
+  <BannerSectionKit />  
+  <InfoSectionKIT />
+  <PrizepoolKIT />
+</div>
+
 
 
 
