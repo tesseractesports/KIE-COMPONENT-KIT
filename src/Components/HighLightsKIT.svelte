@@ -1,5 +1,6 @@
 <script>
-    
+  import { Splide, SplideSlide } from "@splidejs/svelte-splide";
+  import CardSlider from "./CardSliderKIT.svelte";
       const splideOptions = {
     arrowPath: "",
     gap: "22px",
@@ -11,6 +12,38 @@
     autoWidth: true,
     type: "loop",
   };
+  let highlights = [
+    {
+      videoUrl: "https://www.youtube.com/watch?v=VLHNOl_xDcE&list=PLs_yfyfuJEC6yEmw6qEwcHaCussUb9W53&index=68",
+      videoDiscription: "This is a video description",
+    },
+    {     
+
+        videoUrl: "https://www.youtube.com/watch?v=4_XMZJWjxb4&list=PLs_yfyfuJEC6yEmw6qEwcHaCussUb9W53&index=82",
+        videoDiscription: "This is a video description",
+      },
+      {
+        videoUrl: "https://www.youtube.com/watch?v=GNNXF2z_OqY&list=PLs_yfyfuJEC6yEmw6qEwcHaCussUb9W53&index=98",
+        videoDiscription: "This is a video description"  
+
+      },
+      {
+      videoUrl: "https://www.youtube.com/watch?v=VLHNOl_xDcE&list=PLs_yfyfuJEC6yEmw6qEwcHaCussUb9W53&index=68",
+      videoDiscription: "This is a video description",
+    },
+    {     
+
+        videoUrl: "https://www.youtube.com/watch?v=HHrra4eZ6vM&list=PLs_yfyfuJEC6yEmw6qEwcHaCussUb9W53&index=113",
+        videoDiscription: "This is a video description",
+      },
+    ]
+
+      function getYouTubeVideoId(url) {
+    const videoIdMatch = url.match(
+      /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/
+    );
+    return videoIdMatch ? videoIdMatch[1] : null;
+  }
 </script>
 
 <div class="video-slider-custom mb-16">
@@ -40,7 +73,7 @@
                 <div
                   class=" absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 bg-black/20 backdrop-blur rounded-full flex items-center justify-center"
                 >
-                  <img src="/images/PlayBTN.svg" alt="play" class=" w-4 h-4" />
+                  <img src="/assets/images/PlayBTN.svg" alt="play" class=" w-4 h-4" />
                 </div>
               </a>
             </div>
