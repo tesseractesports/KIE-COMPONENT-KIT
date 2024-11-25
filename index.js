@@ -1,5 +1,5 @@
 import './src/app.css';
-export { default as Test } from './src/components/test.svelte';
+export { default as Test } from './src/components/Test.svelte';
 export {default as InfoSectionKIT} from './src/components/InfoSectionKIT.svelte';
 export {default as BannerSectionKIT} from './src/components/BannerSectionKIT.svelte';
 export {default as SectionKIT} from './src/components/SectionKIT.svelte';
