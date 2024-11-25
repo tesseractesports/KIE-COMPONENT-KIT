@@ -1,5 +1,5 @@
 <script>
-  import SectionKIT from './../../components/SectionKIT.svelte';
+  import SectionKIT from './../../Components/SectionKIT.svelte';
   import { ThemeConfig } from '../../stores/ThemeConfig';
     
     $: theme = $ThemeConfig;
