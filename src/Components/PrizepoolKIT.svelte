@@ -59,7 +59,7 @@
                 </div>
                 <div 
                     class="text-3xl font-bold"
-                    style:color={index === 0 ? theme.colors.primary : theme.colors.secondary}
+                    style:color={index === 0 ? theme.colors.primary : theme.colors.primary}
                 >
                     {prize.positionPrize}
                 </div>
@@ -83,7 +83,7 @@
                 </div>
                 <div 
                     class="text-xl font-bold"
-                    style:color={theme.colors.tertiary}
+                    style:color={theme.colors.primary}
                 >
                     {prize.positionPrize}
                 </div>
@@ -115,7 +115,7 @@
                     </div>
                     <div 
                         class="text-2xl font-bold"
-                        style:color={theme.colors.quaternary}
+                        style:color={theme.colors.primary}
                     >
                         {reward.positionPrize}
                     </div>

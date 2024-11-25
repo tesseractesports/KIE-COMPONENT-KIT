@@ -94,7 +94,7 @@
                     </div>
                 </div>
 
-                <!-- Important Dates Timeline -->
+                <!-- Important Dates Timeline
                 {#if format?.rounds?.length > 0}
                     <div class="flex flex-col gap-3">
                         <h2 class="text-sm font-semibold font-['Inter'] uppercase tracking-wide mb-6"
@@ -102,16 +102,16 @@
                             IMPORTANT DATES
                         </h2>
 
-                        <!-- Timeline Container -->
+                        Timeline Container
                         <div class="relative flex flex-col gap-8">
-                            <!-- Timeline Line (Desktop) -->
+                            Timeline Line (Desktop)
                             <div class="hidden lg:block absolute left-4 h-full w-[2px] top-0 bottom-0"
                                  style:background-color={`${theme.colors.foreground}33`}>
                             </div>
 
                             {#each format.rounds as round, index}
                                 <div class="flex flex-col lg:flex-row items-start gap-4">
-                                    <!-- Status Circle -->
+                                    Status Circle
                                     <div class="flex items-center gap-4 relative">
                                         <div class="w-8 h-8 rounded-full flex items-center justify-center bg-opacity-20"
                                              style:background-color={theme.colors.primary}>
@@ -121,7 +121,7 @@
                                         </div>
                                     </div>
 
-                                    <!-- Round Info -->
+                                    Round Info
                                     <div class="flex-1">
                                         <h3 class="text-base font-semibold mb-1"
                                             style:color={theme.colors.foreground}>
@@ -140,7 +140,7 @@
                                     </div>
                                 </div>
 
-                                <!-- Connector (except for last item) -->
+                                Connector (except for last item)
                                 {#if index !== format.rounds.length - 1}
                                     <div class="hidden lg:block w-[2px] h-4 ml-4"
                                          style:background-color={`${theme.colors.foreground}33`}>
@@ -149,7 +149,7 @@
                             {/each}
                         </div>
                     </div>
-                {/if}
+                {/if} -->
             </div>
         </div>
     </div>

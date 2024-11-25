@@ -1,26 +1,49 @@
 <script>
     import { webConfig } from '../stores/webConfig.js';
     import { THEMES } from '../stores/ThemeConfig.js';
-    
+
     $: format = $webConfig?.info?.format;
     $: rounds = format?.rounds || [];
     $: theme = $webConfig?.theme || THEMES.DEFAULT;
+    let selectedRound = null; 
 
-    // Function to get status based on dates
+    // Function to parse a date in "day-month-year" format (e.g., "7-12-24")
+    function parseDate(dateString) {
+        if (!dateString) return new Date(); 
+        const [day, month, year] = dateString.split('-');
+        const fullYear = year.length === 2 ? `20${year}` : year;
+        const parsedDate = new Date(`${fullYear}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`);
+        if (isNaN(parsedDate)) {
+            console.error(`Invalid date: ${dateString}`);
+            return new Date(); 
+        }
+        return parsedDate;
+    }
+
+    // Function to get the status based on dates
     function getRoundStatus(round) {
         const now = new Date();
-        const startDate = new Date(round.startDate);
-        const endDate = new Date(round.endDate);
+        const startDate = parseDate(round.startDate);
+        const endDate = parseDate(round.endDate);
 
         if (now < startDate) return 'upcoming';
         if (now >= startDate && now <= endDate) return 'active';
         return 'completed';
     }
 
-    // Function to format date
-    function formatDate(dateString) {
-        if (!dateString) return '';
-        return new Date(dateString).toLocaleDateString();
+    // Function to format dates (e.g., "7 Nov 2024 - 10 Nov 2024")
+    function formatDates(startDate, endDate) {
+        if (!startDate || !endDate) return 'Dates not available';
+
+        try {
+            const options = { day: 'numeric', month: 'short', year: 'numeric' };
+            const start = parseDate(startDate).toLocaleDateString('en-GB', options);
+            const end = parseDate(endDate).toLocaleDateString('en-GB', options);
+            return `${start} - ${end}`;
+        } catch (error) {
+            console.error('Error formatting dates:', error);
+            return 'Invalid dates';
+        }
     }
 </script>
 
@@ -44,146 +67,68 @@
         </div>
 
         <!-- Rounds Timeline -->
-        <div class="flex flex-col gap-8">
+        <div class="flex items-center gap-6 overflow-x-auto sm:overflow-visible">
             {#each rounds as round, index}
-                <div class="flex flex-col lg:flex-row gap-6 lg:items-start">
-                    <!-- Round Status and Info -->
-                    <div class="flex items-start gap-4 lg:w-1/3">
-                        <!-- Status Circle -->
-                        <div 
-                            class="w-8 h-8 flex-shrink-0 rounded-full flex items-center justify-center mt-1"
-                            style:background-color={
-                                getRoundStatus(round) === 'active' 
-                                    ? theme.colors.primary 
-                                    : getRoundStatus(round) === 'upcoming'
-                                        ? 'transparent'
-                                        : `${theme.colors.foreground}33`
-                            }
-                            style:border={
-                                getRoundStatus(round) === 'upcoming'
-                                    ? `2px solid ${theme.colors.primary}`
-                                    : 'none'
-                            }
-                        >
-                            {#if getRoundStatus(round) === 'upcoming'}
-                                <div 
-                                    class="w-4 h-4 rounded-full"
-                                    style:background-color={theme.colors.primary}
-                                ></div>
-                            {/if}
-                        </div>
-
-                        <!-- Round Title and Dates -->
-                        <div class="flex flex-col gap-1">
-                            <h3 
-                                class="text-sm lg:text-base font-semibold"
-                                style:color={
-                                    getRoundStatus(round) === 'active'
-                                        ? theme.colors.primary
-                                        : theme.colors.foreground
-                                }
-                            >
-                                {round.roundName}
-                            </h3>
-                            <div 
-                                class="flex flex-col text-sm"
-                                style:color={`${theme.colors.foreground}99`}
-                            >
-                                <span>Starts: {formatDate(round.startDate)}</span>
-                                <span>Ends: {formatDate(round.endDate)}</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Round Description -->
-                    <div 
-                        class="lg:flex-1 p-4 rounded-lg"
-                        style:background-color={`${theme.colors.foreground}0a`}
+            <div class="flex flex-col items-center -ml-[24px] gap-5"  >
+                <div class="flex flex-row  w-full ml-[100px] items-center">
+                    <div
+                        on:click={() => (selectedRound = round)}
+                        class="w-8 h-8 flex-shrink-0 rounded-full flex items-center justify-center cursor-pointer"
+                        style:background-color={selectedRound === round ? theme.colors.primary : `${theme.colors.foreground}33`}
+                        style:border={selectedRound === round ? `2px solid ${theme.colors.primary}` : 'none'}
+                        style:color={selectedRound === round ? theme.colors.background : theme.colors.foreground}
                     >
-                        <p 
-                            class="text-sm lg:text-base"
+                    </div>
+                    {#if index !== rounds.length - 1} 
+                    <div
+                        class="h-[2px]"
+                        style:background-color={`${theme.colors.primary}33`}
+                        style="width:100%;"
+                    ></div>
+                    {/if}
+                    </div>
+                    <div class="text-center mr-6">
+                        <h3
+                            class="text-xs font-semibold"
                             style:color={theme.colors.foreground}
                         >
-                            {round.roundDescription}
+                            {round.roundName}
+                        </h3>
+                        <p
+                            class="text-xs whitespace-nowrap ml-4"
+                            style:color={`${theme.colors.foreground}99`}
+                        >
+                            {formatDates(round.startDate, round.endDate)}
                         </p>
                     </div>
                 </div>
-
-                <!-- Connector Line (except for last item) -->
-                {#if index !== rounds.length - 1}
-                    <div 
-                        class="w-[2px] h-8 ml-4"
-                        style:background-color={`${theme.colors.foreground}33`}
-                    ></div>
-                {/if}
             {/each}
         </div>
 
-        <!-- Points System -->
-        {#if format?.pointSystem}
-            <div class="mt-8">
-                <h2 
-                    class="text-sm font-semibold font-['Inter'] uppercase tracking-wide mb-6"
-                    style:color={theme.colors.primary}
+        {#if selectedRound}
+            <div
+                class="mt-8 p-4 rounded-lg"
+                style:background-color={`${theme.colors.foreground}0a`}
+            >
+                <p
+                    class="text-sm lg:text-base"
+                    style:color={theme.colors.foreground}
                 >
-                    POINTS SYSTEM
-                </h2>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {#each Object.entries(format.pointSystem) as [position, points]}
-                        <div 
-                            class="flex justify-between items-center p-4 rounded-lg"
-                            style:background-color={`${theme.colors.foreground}0a`}
-                        >
-                            <span style:color={theme.colors.foreground}>{position}</span>
-                            <span 
-                                class="font-semibold"
-                                style:color={theme.colors.primary}
-                            >
-                                {points} points
-                            </span>
-                        </div>
-                    {/each}
-                </div>
-            </div>
-        {/if}
-
-        <!-- Additional Information -->
-        {#if format?.additionalInfo}
-            <div class="mt-8">
-                <div 
-                    class="p-6 rounded-lg"
-                    style:background-color={`${theme.colors.foreground}0a`}
-                >
-                    <h3 
-                        class="text-sm lg:text-base font-semibold mb-3"
-                        style:color={theme.colors.primary}
-                    >
-                        Additional Information
-                    </h3>
-                    <p 
-                        class="text-sm lg:text-base"
-                        style:color={theme.colors.foreground}
-                    >
-                        {format.additionalInfo}
-                    </p>
-                </div>
+                    {selectedRound.roundDescription}
+                </p>
             </div>
         {/if}
     </div>
 </div>
 
+
 <style>
-    /* Optional: Add smooth transitions for theme changes */
     div {
         transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
     }
 
-    /* Optional: Add hover effect for point system cards */
-    .point-card {
+    .cursor-pointer:hover {
+        transform: scale(1.1);
         transition: transform 0.2s ease-in-out;
-    }
-    
-    .point-card:hover {
-        transform: translateY(-2px);
     }
 </style>
