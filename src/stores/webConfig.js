@@ -38,9 +38,9 @@ const defaultConfig = {
                 {
                     roundName: "Qualification Round",
                     roundDescription: "Initial round description and format details",
-                    startDate: "",
-                    endDate: ""
-                }
+                    startDate: "2-12-23",
+                    endDate: "4-12-24"
+                },
             ]
         },
         schedule: {
