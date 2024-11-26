@@ -1,6 +1,7 @@
 <script>
   import SectionKit from "./SectionKIT.svelte";
   import { webConfig } from '../stores/webConfig.js';
+  import { THEMES } from "../stores/ThemeConfig";
 
   $: leaderboard = $webConfig?.info?.leaderboard;
     $: theme = $webConfig?.theme || THEMES.DEFAULT;

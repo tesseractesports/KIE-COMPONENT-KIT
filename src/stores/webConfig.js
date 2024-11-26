@@ -144,6 +144,13 @@ const defaultConfig = {
             videoThumbnail: getPlaceholder(640, 360, 'secondary')
         }
     ],
+    registerNowSection : {
+        title: "",
+        description: "",
+        background:"",
+        isPrivate:false,
+        privatePageUrl:"",
+    },
     theme: currentTheme
 };
 
