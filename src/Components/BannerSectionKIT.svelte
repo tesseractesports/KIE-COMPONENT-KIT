@@ -71,6 +71,7 @@
                               <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-5 leading-6">
                                   <a 
                                       href={bannerData.button1.url} 
+                                      target="_blank" 
                                       class="flex items-center justify-center gap-x-3 rounded-md px-3 py-2 drop-shadow-lg transition-all duration-300"
                                       style="background-color: {theme.colors.background}22; border: 1px solid {theme.colors.foreground}33;"
                                   >
