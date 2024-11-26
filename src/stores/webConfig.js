@@ -145,9 +145,9 @@ const defaultConfig = {
         }
     ],
     registerNowSection : {
-        title: "",
-        description: "",
-        background:"",
+        title: "sample heading",
+        description: "Blend your style and experience on a global, competitive stage. You have 13 rounds to attack and defend your side using sharp gunplay and tactical abilities. ",
+        background:getPlaceholder(640, 360, 'secondary'),
         isPrivate:false,
         privatePageUrl:"",
     },
