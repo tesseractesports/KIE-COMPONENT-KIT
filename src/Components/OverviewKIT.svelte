@@ -24,10 +24,10 @@
 
     <!-- Main Content Container -->
     <div class="px-6 pt-5 pb-10 lg:px-10 lg:pt-10 lg:pb-16 flex flex-col gap-10">
-        <div class="flex flex-col lg:flex-row gap-10 items-start lg:items-center lg:gap-7">
+        <div class="flex flex-col lg:flex-row gap-10 items-start lg:gap-7">
             
             <!-- Left Section with Image - Desktop -->
-            <div class="hidden lg:block w-full lg:w-[620px] rounded-xl overflow-hidden"
+            <div class="hidden lg:block w-full lg:w-[620px] rounded-xl overflow-hidden max-w-screen-sm"
                  style:background-color={theme.colors.background}>
                 <img 
                     src={overview?.videoThumbnail} 

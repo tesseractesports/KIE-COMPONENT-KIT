@@ -5,26 +5,21 @@
   
   $: prizePool = $webConfig?.prizePool;
   $: theme = $ThemeConfig;
-
-  // Helper function to generate gradient background style
-  $: gradientStyle = `
-      background-color: ${theme.colors.primary};
-      background-image: linear-gradient(135deg, ${theme.colors.primary}, ${theme.colors.secondary});
-  `;
+  
 </script>
 <SectionKIT>
 
   <div class="flex flex-col gap-3 px-2 ">
     <!-- Total Prize Pool Banner -->
-    <div class="relative w-full h-[180px] rounded-xl overflow-hidden mt-4">
+    <div class="relative w-full min-h-44 rounded-xl overflow-hidden mt-4 flex items-center justify-between" style="background-image: url({ prizePool.background || '/api/placeholder/1920x1080'});">
         <!-- Background with Theme Color -->
-        <div 
+        <!-- <div 
             class="absolute inset-0 bg-pattern"
-            style={gradientStyle}
-        ></div>
+            style="background-image: url({ prizePool.background || '/api/placeholder/1920x1080'});"
+        ></div> -->
   
         <!-- Content -->
-        <div class="relative z-10 h-full flex flex-col justify-center lg:px-8 lg:justify-center lg:items-start items-center text-center">
+        <div class="relative z-10 h-full flex flex-col justify-center lg:px-8 lg:justify-center lg:items-start text-center">
             <div class="text-sm font-medium uppercase tracking-wider mb-2"
                  style:color={theme.colors.background}>
                 TOTAL PRIZE POOL
@@ -39,7 +34,7 @@
         <img 
             src={prizePool?.rightCharacter || "https://via.placeholder.com/300x300"}
             alt="Prize Pool Character"
-            class="absolute right-4 top-1/2 -translate-y-1/2 h-36 object-contain hidden lg:block "
+            class=" m-6 right-4 h-36 object-contain hidden lg:block "
         />
     </div>
   
