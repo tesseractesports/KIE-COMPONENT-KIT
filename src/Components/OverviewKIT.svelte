@@ -1,6 +1,6 @@
 <script>
-  import { webConfig } from '../stores/webConfig.js';
-  import { THEMES } from '../stores/ThemeConfig.js';
+  import { webConfig } from '../stores/webConfig';
+  import { THEMES } from '../stores/ThemeConfig';
     
   $: overview = $webConfig?.info?.overview;
     $: format = $webConfig?.info?.format;

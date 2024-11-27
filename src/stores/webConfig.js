@@ -142,6 +142,16 @@ const defaultConfig = {
             videoTitle: "Tournament Highlights",
             videoUrl: "",
             videoThumbnail: getPlaceholder(640, 360, 'secondary')
+        },
+        {
+            videoTitle: "Final Match Highlights",
+            videoUrl: "",
+            videoThumbnail: getPlaceholder(640, 360, 'secondary')
+        },
+        {
+            videoTitle: "Player of the Tournament",
+            videoUrl: "",
+            videoThumbnail: getPlaceholder(640, 360, 'secondary')
         }
     ],
     registerNowSection : {
