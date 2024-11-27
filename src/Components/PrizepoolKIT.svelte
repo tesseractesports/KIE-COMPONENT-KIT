@@ -1,5 +1,5 @@
 <script>
-	import SectionKIT from './SectionKIT.svelte';
+       import SectionKIT from './SectionKIT.svelte';
   import { webConfig } from '../stores/webConfig.js';
   import { ThemeConfig } from '../stores/ThemeConfig.js';
   
@@ -19,12 +19,12 @@
         ></div> -->
   
         <!-- Content -->
-        <div class="relative z-10 h-full flex flex-col justify-center lg:px-8 lg:justify-center lg:items-start text-center">
+        <div class="relative z-10 h-full flex flex-col justify-center lg:px-6 lg:justify-center lg:items-start text-center">
             <div class="text-sm font-medium uppercase tracking-wider mb-2"
                  style:color={theme.colors.background}>
                 TOTAL PRIZE POOL
             </div>
-            <div class="text-4xl font-bold"
+            <div class="text-4xl font-bold px-4"
                  style:color={theme.colors.background}>
                 {prizePool?.totalPrize || "₹2,00,00,000"}
             </div>

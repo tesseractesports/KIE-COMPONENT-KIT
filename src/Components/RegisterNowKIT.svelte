@@ -30,7 +30,7 @@
               </div>
               <div class="flex items-end pt-4">
                 {#if registerdata.isPrivate}
-                  <a href="{registerdata.privateURL}" target="_blank" class="rounded-md bg-yellow-400 px-8 py-2 text-center leading-6 text-neutral-900 drop-shadow-lg"
+                  <a href="{registerdata.privateURL ? registerdata.privateURL : "#" }" target="_blank" class="rounded-md bg-yellow-400 px-8 py-2 text-center leading-6 text-neutral-900 drop-shadow-lg"
                   style="background-color: {theme.colors.primary}; color: {theme.colors.background};"
                   >
                     Register Now

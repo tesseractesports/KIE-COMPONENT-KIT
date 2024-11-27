@@ -1,65 +1,32 @@
 <script>
     import { webConfig } from '../stores/webConfig.js';
     import { THEMES } from '../stores/ThemeConfig.js';
+    import moment from 'moment';
 
     $: format = $webConfig?.info?.format;
     $: rounds = format?.rounds || [];
     $: theme = $webConfig?.theme || THEMES.DEFAULT;
-    let selectedRound = null; 
-
-    // Function to parse a date in "day-month-year" format (e.g., "7-12-24")
-    function parseDate(dateString) {
-        if (!dateString) return new Date(); 
-        const [day, month, year] = dateString.split('-');
-        const fullYear = year.length === 2 ? `20${year}` : year;
-        const parsedDate = new Date(`${fullYear}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`);
-        if (isNaN(parsedDate)) {
-            console.error(`Invalid date: ${dateString}`);
-            return new Date(); 
-        }
-        return parsedDate;
+    // Select the first round by default
+    let selectedRound = null;
+    $: if (rounds.length > 0 && !selectedRound) {
+        selectedRound = rounds[0];
     }
-
-    // Function to get the status based on dates
-    function getRoundStatus(round) {
-        const now = new Date();
-        const startDate = parseDate(round.startDate);
-        const endDate = parseDate(round.endDate);
-
-        if (now < startDate) return 'upcoming';
-        if (now >= startDate && now <= endDate) return 'active';
-        return 'completed';
-    }
-
-    // Function to format dates (e.g., "7 Nov 2024 - 10 Nov 2024")
-    function formatDates(startDate, endDate) {
-        if (!startDate || !endDate) return 'Dates not available';
-
-        try {
-            const options = { day: 'numeric', month: 'short', year: 'numeric' };
-            const start = parseDate(startDate).toLocaleDateString('en-GB', options);
-            const end = parseDate(endDate).toLocaleDateString('en-GB', options);
-            return `${start} - ${end}`;
-        } catch (error) {
-            console.error('Error formatting dates:', error);
-            return 'Invalid dates';
-        }
-    }
+    
 </script>
 
-<div class="w-full" style:background-color={theme.colors.background}>
+<div class="w-full overflow-hidden" style:background-color={theme.colors.background}>
     <!-- Main Content Container -->
-    <div class="w-full py-6 sm:py-8 md:py-10 flex-col justify-start items-start gap-10 px-6 lg:px-10">
+    <div class="w-full py-6 sm:py-8 md:py-10 flex-col justify-start items-start gap-10 px-6  lg:px-10 overflow-hidden">
         <!-- Format Description -->
         <div class="flex flex-col gap-3">
             <h2 
-                class="text-sm font-semibold font-['Inter'] uppercase leading-tight tracking-wide"
+                class="text-sm font-semibold font-['Inter'] uppercase leading-tight tracking-wide py-2"
                 style:color={theme.colors.primary}
             >
                 TOURNAMENT FORMAT
             </h2>
             <p 
-                class="text-sm lg:text-base font-normal font-['Inter']"
+                class="text-sm lg:text-base font-normal font-['Inter'] py-2"
                 style:color={theme.colors.foreground}
             >
                 {format?.description || "Tournament format details and progression structure."}
@@ -67,7 +34,7 @@
         </div>
 
         <!-- Rounds Timeline -->
-        <div class="flex items-center gap-6 overflow-x-auto sm:overflow-visible">
+        <div class="flex items-center gap-6 overflow-x-auto px-3 py-12">
             {#each rounds as round, index}
             <div class="flex flex-col items-center -ml-[24px] gap-5"  >
                 <div class="flex flex-row  w-full ml-[100px] items-center">
@@ -98,8 +65,7 @@
                             class="text-xs whitespace-nowrap ml-4"
                             style:color={`${theme.colors.foreground}99`}
                         >
-                            {formatDates(round.startDate, round.endDate)}
-                        </p>
+                        {moment(round.startDate).format("DD MMM YYYY")} - {moment(round.endDate).format("DD MMM YYYY")}                        </p>
                     </div>
                 </div>
             {/each}
@@ -120,7 +86,7 @@
         {/if}
     </div>
 </div>
-
+  
 
 <style>
     div {
