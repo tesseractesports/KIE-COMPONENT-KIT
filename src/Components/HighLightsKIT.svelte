@@ -12,38 +12,12 @@
     autoWidth: true,
     type: "loop",
   };
-  let highlights = [
-    {
-      videoUrl: "https://www.youtube.com/watch?v=VLHNOl_xDcE&list=PLs_yfyfuJEC6yEmw6qEwcHaCussUb9W53&index=68",
-      videoDiscription: "This is a video description",
-    },
-    {     
 
-        videoUrl: "https://www.youtube.com/watch?v=4_XMZJWjxb4&list=PLs_yfyfuJEC6yEmw6qEwcHaCussUb9W53&index=82",
-        videoDiscription: "This is a video description",
-      },
-      {
-        videoUrl: "https://www.youtube.com/watch?v=GNNXF2z_OqY&list=PLs_yfyfuJEC6yEmw6qEwcHaCussUb9W53&index=98",
-        videoDiscription: "This is a video description"  
-
-      },
-      {
-      videoUrl: "https://www.youtube.com/watch?v=VLHNOl_xDcE&list=PLs_yfyfuJEC6yEmw6qEwcHaCussUb9W53&index=68",
-      videoDiscription: "This is a video description",
-    },
-    {     
-
-        videoUrl: "https://www.youtube.com/watch?v=HHrra4eZ6vM&list=PLs_yfyfuJEC6yEmw6qEwcHaCussUb9W53&index=113",
-        videoDiscription: "This is a video description",
-      },
-    ]
-
-      function getYouTubeVideoId(url) {
-    const videoIdMatch = url.match(
-      /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/
-    );
-    return videoIdMatch ? videoIdMatch[1] : null;
-  }
+  import { webConfig } from '../stores/webConfig.js';
+  import { ThemeConfig } from '../stores/ThemeConfig.js';
+  $: theme = $ThemeConfig;
+  let sampleArray = [];
+  $:highlightsdata= sampleArray.length ? sampleArray : $webConfig?.highlights ;
 </script>
 
 <div class="video-slider-custom mb-16">
@@ -55,21 +29,19 @@
       </div>
     </div>
     <CardSlider options={splideOptions}>
-      {#each highlights as highlight}
+      {#each sampleArray.length ? sampleArray : $webConfig?.highlights   as highlight  }
         <SplideSlide>
           <div
             class="flex flex-grow flex-col py-2 px-2 items-start justify-center gap-y-3 rounded-xl max-w-[238px] lg:max-w-[387px] transition duration-300 border border-transparent hover:border-[color:var(--Gold-800,#63542D)] bg-[var(--Charcoal-900,#111)]"
           >
             <div class="relative w-full h-full">
               <a href={highlight.videoUrl} target="_blank">
-                {#if getYouTubeVideoId(highlight.videoUrl)}
                   <img
                     alt=""
-                    src={`https://img.youtube.com/vi/${getYouTubeVideoId(highlight.videoUrl)}/0.jpg`}
+                    src={highlight.videoThumbnail}
                     loading="lazy"
                     class="h-48 w-full flex-shrink-0 rounded-md object-cover object-center"
                   />
-                {/if}
                 <div
                   class=" absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 bg-black/20 backdrop-blur rounded-full flex items-center justify-center"
                 >
@@ -84,7 +56,7 @@
               class="flex items-start self-stretch text-lg font-semibold leading-7 text-white"
             >
               <p>
-                {highlight.videoDiscription}
+                {highlight.videoTitle}
               </p>
             </div>
           </div>
