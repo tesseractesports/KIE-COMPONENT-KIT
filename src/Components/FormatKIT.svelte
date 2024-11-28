@@ -8,6 +8,27 @@
     $: theme = $webConfig?.theme || THEMES.DEFAULT;
     // Select the first round by default
     let selectedRound = null;
+
+    // active round is the round that is active in the timeline
+
+    let activeRound = null;
+    
+    $: if (rounds.length > 0) {
+        for (let i = 0; i < rounds.length; i++) {
+           const startDate = moment(rounds[i].startDate);
+              const endDate = moment(rounds[i].endDate);
+                if (startDate < moment() && endDate > moment()) {
+                    activeRound = rounds[i];
+                }
+        }
+        if(!activeRound) {
+            activeRound = rounds[0];
+        }
+    }
+
+   
+
+
     $: if (rounds.length > 0 && !selectedRound) {
         selectedRound = rounds[0];
     }
@@ -41,9 +62,9 @@
                     <div
                         on:click={() => (selectedRound = round)}
                         class="w-8 h-8 flex-shrink-0 rounded-full flex items-center justify-center cursor-pointer"
-                        style:background-color={selectedRound === round ? theme.colors.primary : `${theme.colors.foreground}33`}
-                        style:border={selectedRound === round ? `2px solid ${theme.colors.primary}` : 'none'}
-                        style:color={selectedRound === round ? theme.colors.background : theme.colors.foreground}
+                        style:background-color={activeRound === round ? theme.colors.primary : `${theme.colors.foreground}33`}
+                        style:border={activeRound === round ? `2px solid ${theme.colors.primary}` : 'none'}
+                        style:color={activeRound === round ? theme.colors.background : theme.colors.foreground}
                         
                     >
                     </div>
