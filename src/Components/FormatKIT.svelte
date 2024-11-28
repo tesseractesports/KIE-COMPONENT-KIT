@@ -55,7 +55,7 @@
                     ></div>
                     {/if}
                     </div>
-                    <div class="text-center mr-6" style="margin-left:-35px; margin-right:70px;">
+                    <div class="text-center mr-6 -ml-6 mr-14">
                         <h3
                             class="text-xs font-semibold mr-14"
                             style:color={theme.colors.foreground}
