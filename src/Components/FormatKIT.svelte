@@ -34,7 +34,7 @@
         </div>
 
         <!-- Rounds Timeline -->
-        <div class="flex items-center gap-6 overflow-x-auto px-3 py-12">
+        <div class="flex items-center  overflow-x-auto px-3 py-12 ">
             {#each rounds as round, index}
             <div class="flex flex-col items-center -ml-[24px] gap-5"  >
                 <div class="flex flex-row  w-full ml-[100px] items-center">
@@ -44,25 +44,26 @@
                         style:background-color={selectedRound === round ? theme.colors.primary : `${theme.colors.foreground}33`}
                         style:border={selectedRound === round ? `2px solid ${theme.colors.primary}` : 'none'}
                         style:color={selectedRound === round ? theme.colors.background : theme.colors.foreground}
+                        
                     >
                     </div>
                     {#if index !== rounds.length - 1} 
                     <div
-                        class="h-[2px]"
+                        class="h-[2px] w-full"
+                         style="width:100%;"
                         style:background-color={`${theme.colors.primary}33`}
-                        style="width:100%;"
                     ></div>
                     {/if}
                     </div>
-                    <div class="text-center mr-6">
+                    <div class="text-center mr-6" style="margin-left:-35px; margin-right:70px;">
                         <h3
-                            class="text-xs font-semibold"
+                            class="text-xs font-semibold mr-14"
                             style:color={theme.colors.foreground}
                         >
                             {round.roundName}
                         </h3>
                         <p
-                            class="text-xs whitespace-nowrap ml-4"
+                            class="text-xs whitespace-nowrap ml-4 "
                             style:color={`${theme.colors.foreground}99`}
                         >
                         {moment(round.startDate).format("DD MMM YYYY")} - {moment(round.endDate).format("DD MMM YYYY")}                        </p>
