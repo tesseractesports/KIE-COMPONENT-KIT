@@ -12,9 +12,9 @@
     }
 </script>
 
-<div class="w-full" style:background-color={theme.colors.background}>
+<div class="w-full " style:background-color={theme.colors.background} >
     <!-- Banner Image - Mobile -->
-    <div class="lg:hidden w-full h-[184px]">
+    <div class="lg:hidden w-full h-[184px] ">
         <img 
             src={overview?.videoThumbnail} 
             alt="Tournament Banner" 
@@ -40,20 +40,20 @@
             <div class="flex-1 flex flex-col gap-10">
                 <!-- About Tournament -->
                 <div class="flex flex-col gap-3">
-                    <h2 class="text-sm font-semibold font-['Inter'] uppercase leading-tight tracking-wide"
+                    <h2 class="text-sm font-semibold font-['Inter'] uppercase leading-tight tracking-wide mt-2"
                         style:color={theme.colors.primary}>
                         ABOUT THIS TOURNAMENT
                     </h2>
-                    <p class="text-sm lg:text-base font-normal font-['Inter']"
+                    <p class="text-sm lg:text-base font-normal font-['Inter'] mt-2"
                        style:color={theme.colors.foreground}>
                         {overview?.aboutTournament}
                     </p>
 
                     <!-- Tournament Details Grid -->
-                    <div class="grid grid-cols-2 lg:grid-cols-5 gap-5 mt-4">
+                    <div class="grid grid-cols-2 lg:grid-cols-3 gap-5 mt-6">
                         <div class="flex flex-col gap-2">
                             <span class="text-sm lg:text-base font-medium"
-                                  style:color={theme.colors.foreground}>Start Date:</span>
+                                  style:color={theme.colors.foreground}>Start Date</span>
                             <span class="text-sm lg:text-base font-medium"
                                   style:color={theme.colors.foreground}>
                                 {overview?.startDate}
@@ -61,7 +61,7 @@
                         </div>
                         <div class="flex flex-col gap-2">
                             <span class="text-sm lg:text-base font-medium"
-                                  style:color={theme.colors.foreground}>End Date:</span>
+                                  style:color={theme.colors.foreground}>End Date</span>
                             <span class="text-sm lg:text-base font-medium"
                                   style:color={theme.colors.foreground}>
                                 {overview?.endDate}
@@ -69,24 +69,24 @@
                         </div>
                         <div class="flex flex-col gap-2">
                             <span class="text-sm lg:text-base font-medium"
-                                  style:color={theme.colors.foreground}>Total Teams:</span>
+                                  style:color={theme.colors.foreground}>Total Teams</span>
                             <span class="text-sm lg:text-base font-medium"
                                   style:color={theme.colors.foreground}>
                                 {overview?.totalTeams}
                             </span>
                         </div>
                         <div class="flex flex-col gap-2">
-                            <span class="text-sm lg:text-base font-medium"
-                                  style:color={theme.colors.foreground}>Registration:</span>
+                            <span class="text-sm lg:text-base font-medium lg:mt-6 "
+                                  style:color={theme.colors.foreground}>Registration</span>
                             <span class="text-sm lg:text-base font-medium"
                                   style:color={theme.colors.foreground}>
                                 Invite only
                             </span>
                         </div>
                         <div class="flex flex-col gap-2">
-                            <span class="text-sm lg:text-base font-medium"
-                                  style:color={theme.colors.foreground}>Location:</span>
-                            <span class="text-sm lg:text-base font-medium"
+                            <span class="text-sm lg:text-base font-medium lg:mt-6"
+                                  style:color={theme.colors.foreground}>Location</span>
+                            <span class="text-sm lg:text-base font-medium whitespace-nowrap"
                                   style:color={theme.colors.foreground}>
                                 {overview?.location}
                             </span>

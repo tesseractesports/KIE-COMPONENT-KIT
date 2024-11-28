@@ -42,14 +42,14 @@
                               <img 
                                   src={bannerData.logo} 
                                   alt="Tournament Logo" 
-                                  class="z-10 h-[120px] w-24 flex-shrink-0"
+                                  class="z-10 w-24 flex-shrink-0"
                               />
                           {/if}
 
                           <!-- Title -->
                           <div class="flex items-end pt-2">
                               <h1 
-                                  class="font-manrope flex-grow text-[56px] font-extrabold leading-[normal]"
+                                  class="font-manrope flex-grow text-[56px] font-extrabold leading-[normal] font-['Inter']"
                                   style:color={theme.colors.primary}
                               >
                                   {bannerData.title}
@@ -59,7 +59,7 @@
                           <!-- Description -->
                           <div class="flex items-end pt-1 w-full">
                               <p 
-                                  class="max-w-lg text-lg leading-8"
+                                  class="max-w-lg text-lg leading-8 font-['Inter']"
                                   style:color={theme.colors.foreground}
                               >
                                   {bannerData.description}
