@@ -24,7 +24,8 @@
   <div class="video-slider-custom mb-16">
       <div class="py-10 flex-col justify-center items-end gap-5 inline-flex">
         <div
-          class="self-stretch h-6 text-amber-400 text-lg font-semibold font-['Inter'] uppercase leading-normal tracking-wide"
+          class="self-stretch h-6  text-lg font-semibold font-['Inter'] uppercase leading-normal tracking-wide"
+          style:color={theme.colors.primary}
         >
           HIGHLIGHTS
         </div>
@@ -54,7 +55,7 @@
               </div>
     
               <div
-                class="flex items-start self-stretch text-lg font-semibold leading-7 text-white"
+                class="flex items-start self-stretch font-['inter'] leading-7 text-white"
               >
                 <p>
                   {highlight.videoTitle}
