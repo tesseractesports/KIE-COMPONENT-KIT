@@ -2,6 +2,7 @@
   import SectionKit from "./SectionKIT.svelte";
   import { webConfig } from '../stores/webConfig.js';
   import { THEMES } from "../stores/ThemeConfig";
+  import Svgc from "./Svgc.svelte";
 
   $: leaderboard = $webConfig?.info?.leaderboard;
     $: theme = $webConfig?.theme || THEMES.DEFAULT;
@@ -29,18 +30,10 @@
                         <option value={option}>{option}</option>
                     {/each}
                 </select>
-                <div class="pointer-events-none absolute right-3">
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                         class="h-5 w-5"
-                         fill="none"
-                         viewBox="0 0 24 24"
-                         stroke="currentColor"
-                         style:color={theme.colors.foreground}>
-                        <path stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="2"
-                              d="M19 9l-7 7-7-7" />
-                    </svg>
+                <div class="pointer-events-none absolute right-3"
+                    style:color={theme.colors.foreground}>
+
+                    <Svgc type="downarrow" />
                 </div>
             </div>
         {/each}
