@@ -11,7 +11,7 @@
 
   <div class="flex flex-col gap-3 px-2 ">
     <!-- Total Prize Pool Banner -->
-    <div class="relative w-full min-h-44 rounded-xl overflow-hidden mt-4 flex items-center justify-between text-center md:text-left" style="background-image: url({ prizePool.background || '/api/placeholder/1920x1080'});">
+    <div class="relative w-full min-h-44 rounded-xl overflow-hidden mt-4 flex items-center justify-between text-center md:text-left bg-cover" style="background-image: url({ prizePool.background || '/api/placeholder/1920x1080'});">
         <!-- Background with Theme Color -->
         <!-- <div 
             class="absolute inset-0 bg-pattern"

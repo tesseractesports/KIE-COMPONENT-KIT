@@ -12,28 +12,27 @@
     }
 </script>
 
-<div class="w-full " style:background-color={theme.colors.background} >
-    <!-- Banner Image - Mobile -->
-    <div class="lg:hidden w-full h-[184px] ">
-        <img 
-            src={overview?.videoThumbnail} 
-            alt="Tournament Banner" 
-            class="w-full h-full object-cover"
-        />
-    </div>
+<div class="w-full"  >   
 
-    <!-- Main Content Container -->
-    <div class="px-6 pt-5 pb-10 lg:px-10 lg:pt-10 lg:pb-16 flex flex-col gap-10">
-        <div class="flex flex-col lg:flex-row gap-10 items-start lg:gap-7">
-            
+    <div class="pt-5 pb-10 lg:pt-10 lg:pb-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 items-start lg:gap-7">
             <!-- Left Section with Image - Desktop -->
-            <div class="hidden lg:block w-full lg:w-[620px] rounded-xl overflow-hidden max-w-screen-sm"
+            <div class="relative rounded-xl overflow-hidden max-w-screen-sm"
                  style:background-color={theme.colors.background}>
+                <a href={overview.videoUrl} target="_blank">
                 <img 
                     src={overview?.videoThumbnail} 
                     alt="Tournament Banner"
                     class="w-full h-full object-cover"
                 />
+                 <div
+                        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 bg-black/20 backdrop-blur rounded-full flex items-center justify-center"
+                    >
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path id="Polygon 1" d="M15.2874 6.90473C16.2375 7.3913 16.2375 8.60773 15.2874 9.0943L2.13782 15.8283C1.18768 16.3148 -4.79569e-08 15.7066 0 14.7335L6.63702e-07 1.26555C7.11659e-07 0.292404 1.18768 -0.31581 2.13782 0.170762L15.2874 6.90473Z" fill="white" />
+                        </svg>
+                    </div>
+                </a>
             </div>
 
             <!-- Right Section -->
