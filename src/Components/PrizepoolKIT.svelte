@@ -9,9 +9,9 @@
 </script>
 <SectionKIT>
 
-  <div class="flex flex-col gap-3 px-2 ">
+  <div class="flex flex-col gap-3 px-2 mb-16">
     <!-- Total Prize Pool Banner -->
-    <div class="relative w-full min-h-44 rounded-xl overflow-hidden mt-4 flex items-center justify-between text-center md:text-left bg-cover" style="background-image: url({ prizePool.background || '/api/placeholder/1920x1080'});">
+    <div class="relative w-full min-h-44 rounded-xl overflow-hidden mt-4 block py-5 sm:flex items-center justify-between text-center md:text-left bg-cover" style="background-image: url({ prizePool.background || '/api/placeholder/1920x1080'});">
         <!-- Background with Theme Color -->
         <!-- <div 
             class="absolute inset-0 bg-pattern"
@@ -25,7 +25,7 @@
                 TOTAL PRIZE POOL
             </div>
             <div class="text-4xl font-bold px-4"
-                 style:color={theme.colors.background}>
+                 style:color={theme.colors.primary}>
                 {prizePool?.totalPrize || "₹2,00,00,000"}
             </div>
         </div>
@@ -63,7 +63,7 @@
     </div>
   
     <!-- Other Positions -->
-    <div class="grid grid-cols-2 md:grid-cols-5 gap-2">
+    <div class="grid grid-cols-1 md:grid-cols-2  sm:text-left text-center sm:grid-cols-auto  lg:grid-cols-4 gap-2">
         {#each prizePool?.prizeDetails.slice(3) || [] as prize}
             <div 
                 class="rounded-xl p-4 transition-all duration-300 hover:-translate-y-1"
@@ -71,13 +71,13 @@
                 style:border={`1px solid ${theme.colors.foreground}22`}
             >
                 <div 
-                    class="text-sm font-medium uppercase tracking-wider mb-2 text-sm  overflow-hidden text-ellipsis "
+                    class="text-sm font-medium uppercase tracking-wider "
                     style:color={`${theme.colors.foreground}88`}
                 >
                     {prize.positionTitle}
                 </div>
                 <div 
-                    class="text-xl font-bold whitespace-nowrap"
+                    class="text-xl font-bold "
                     style:color={theme.colors.primary}
                 >
                     {prize.positionPrize}
@@ -89,10 +89,10 @@
     <!-- Special Rewards -->
     <div class="mt-4">
         <div class="flex items-center text-sm font-medium uppercase tracking-wider mb-4 text-start px-2" style="color: {theme.colors.primary};">
-            <span class="flex-shrink-0">SPECIAL REWARDS</span>
+            <span class="">SPECIAL REWARDS</span>
             <div class="flex-grow border-b ml-4 border-gray-700"></div>
         </div>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="grid grid-cols-1 sm:text-left text-center sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-2">
             {#each prizePool?.specialRewards || [] as reward}
                 <div 
                     class="rounded-xl p-4 transition-all duration-300 hover:-translate-y-1"

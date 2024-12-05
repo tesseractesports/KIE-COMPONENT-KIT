@@ -42,7 +42,7 @@
                       alt=""
                       src={highlight.videoThumbnail}
                       loading="lazy"
-                      class="h-48 w-full flex-shrink-0 rounded-md object-cover object-center"
+                      class=" w-full flex-shrink-0 rounded-md object-cover object-center"
                     />
                   <div
                     class=" absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 bg-black/20 backdrop-blur rounded-full flex items-center justify-center"
