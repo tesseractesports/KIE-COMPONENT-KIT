@@ -8,6 +8,7 @@
     import { webConfig } from '../stores/webConfig';
     import Svgc from './Svgc.svelte';
 
+    export let leaderboardData = [];
     $: infoData = $webConfig?.info;
     console.log(infoData)
     // Check if specific section has data
@@ -42,7 +43,7 @@
         { name: "Format", key: "format", component: FormatKIT },
         { name: "Schedule", key: "schedule", component: null },
         { name: "Teams", key: "teams", component: null },
-        { name: "Leaderboard", key: "leaderboard", component: LeaderBoardKIT },
+        { name: "Leaderboard", key: "leaderboard", component: LeaderBoardKIT, props: { data: leaderboardData }},
         { name: "Videos", key: "videos", component: VideosKIT }
     ].filter(tab => infoData?.[tab.key]?.isEnabled);
 </script>
@@ -62,7 +63,10 @@
                     {#if tab.component}
                         <svelte:component 
                             this={tab.component}
+                            {...(tab.props || {})}
                         />
+                       <!-- <svelte:component this={tab.component} {...(tab.props || {})} /> -->
+
                     {:else}
                         <div>Content for {tab.name} tab</div>
                     {/if}

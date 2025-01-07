@@ -25,7 +25,8 @@
   <div class="video-slider-custom mb-16">
       <div class="py-10 flex-col justify-center items-end gap-5 inline-flex">
         <div
-          class="self-stretch h-6 text-amber-400 text-lg font-semibold font-['Inter'] uppercase leading-normal tracking-wide"
+          class="self-stretch h-6  text-lg font-semibold font-['Inter'] uppercase leading-normal tracking-wide"
+          style:color={theme.colors.primary}
         >
           HIGHLIGHTS
         </div>
@@ -42,7 +43,7 @@
                       alt=""
                       src={highlight.videoThumbnail}
                       loading="lazy"
-                      class="h-48 w-full flex-shrink-0 rounded-md object-cover object-center"
+                      class=" w-full flex-shrink-0 rounded-md object-cover object-center"
                     />
                   <div
                     class=" absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 bg-black/20 backdrop-blur rounded-full flex items-center justify-center"
@@ -51,7 +52,7 @@
               </div>
     
               <div
-                class="flex items-start self-stretch text-lg font-semibold leading-7 text-white"
+                class="flex items-start self-stretch font-['inter'] leading-7 text-white"
               >
                 <p>
                   {highlight.videoTitle}
