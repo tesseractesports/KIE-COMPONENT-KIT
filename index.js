@@ -13,3 +13,4 @@ export {default as PrizepoolKIT} from './src/Components/PrizepoolKIT.svelte';
 export {default as HighLightsKIT} from './src/Components/HighLightsKIT.svelte';
 export {THEMES, ThemeConfig, THEME_LIST} from './src/stores/ThemeConfig';
 export {webConfig, CONFIG_PATHS, CONFIG_TEMPLATES, CONFIG_SECTIONS} from './src/stores/webConfig';
+export {default as Svgc} from './src/Components/Svgc.svelte';

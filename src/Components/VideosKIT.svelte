@@ -3,6 +3,7 @@
     import { webConfig } from '../stores/webConfig.js';
     $: videos = $webConfig?.info?.videos?.videos || [];
     $: theme = $webConfig?.theme || THEMES.DEFAULT;
+    import Svgc from './Svgc.svelte';
 
     // Function to handle video click
     function handleVideoClick(url) {
@@ -39,14 +40,7 @@
                                 class="w-12 h-12 lg:w-16 lg:h-16 rounded-full flex items-center justify-center"
                                 style:background-color={theme.colors.primary}
                             >
-                                <svg 
-                                    xmlns="http://www.w3.org/2000/svg" 
-                                    viewBox="0 0 24 24" 
-                                    fill="currentColor" 
-                                    class="w-6 h-6 lg:w-8 lg:h-8 text-white ml-1"
-                                >
-                                    <path d="M8 5v14l11-7z" />
-                                </svg>
+                               <Svgc type="play" />
                             </div>
                         </div>
 
