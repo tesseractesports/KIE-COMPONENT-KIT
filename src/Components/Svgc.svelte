@@ -1,11 +1,13 @@
 <script>
-    export let type = "";
-    export let customClass="";
-    const svgs = {
-      play: `<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+  import { tick } from "svelte";
+
+  export let type = "";
+  export let customClass = "";
+  const svgs = {
+    play: `<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                <path d="M15.2874 6.90473C16.2375 7.3913 16.2375 8.60773 15.2874 9.0943L2.13782 15.8283C1.18768 16.3148 -4.79569e-08 15.7066 0 14.7335L6.63702e-07 1.26555C7.11659e-07 0.292404 1.18768 -0.31581 2.13782 0.170762L15.2874 6.90473Z" fill="white"/>
              </svg>`,
-      zerostate:`<svg xmlns="http://www.w3.org/2000/svg" width="330" height="304" viewBox="0 0 330 304" fill="none">
+    zerostate: `<svg xmlns="http://www.w3.org/2000/svg" width="330" height="304" viewBox="0 0 330 304" fill="none">
                  <path d="M246.143 111.38C251.446 111.267 257.174 110.606 263.054 109.898C263.427 109.853 263.801 109.808 264.176 109.763C269.709 109.094 275.365 108.411 280.955 108.116C292.898 107.485 304.437 108.631 313.681 115.39C320.864 121.128 325.694 129.299 327.259 138.358L327.26 138.367L327.262 138.376C330.52 153.829 330.327 173.025 325.985 190.863C321.643 208.707 313.167 225.128 299.917 235.107L300.218 235.506L299.917 235.107C285.488 245.981 267.542 250.519 248.978 251.694C230.416 252.869 211.278 250.68 194.498 248.135C156.198 242.32 118.059 232.231 83.3389 214.885L83.3387 214.885C68.3031 207.381 51.9585 197.88 37.926 186.118C23.8918 174.354 12.1964 160.35 6.41643 143.844L6.41623 143.843C2.55647 132.863 -0.0990996 119.583 0.616725 106.956C1.33233 94.3318 5.41243 82.4072 14.9708 74.0459C26.3599 64.5965 40.4942 59.074 55.2728 58.2995L55.2728 58.2996L55.2814 58.299C70.3307 57.2497 80.8311 64.1898 92.5786 73.0564C110.516 86.7053 130.663 98.5234 152.625 104.618C174.996 110.849 198.866 111.799 222.32 111.799L222.323 111.799C230.33 111.743 238.308 111.575 246.143 111.38ZM246.143 111.38C246.143 111.38 246.142 111.38 246.142 111.38L246.131 110.88M246.143 111.38C246.144 111.38 246.144 111.38 246.144 111.38L246.131 110.88M246.131 110.88C251.742 110.761 257.839 110.024 264.12 109.266C281.459 107.171 300.202 104.908 313.985 114.993M246.131 110.88C238.297 111.076 230.322 111.243 222.32 111.299L313.985 114.993M313.985 114.993C321.267 120.807 326.165 129.09 327.751 138.273L313.985 114.993Z" fill="#151515" stroke="#323232"/>
                  <path d="M267.195 296.645C267.171 296.68 267.102 296.759 266.914 296.874C266.617 297.057 266.143 297.254 265.473 297.458C264.141 297.864 262.153 298.262 259.561 298.645C254.384 299.408 246.879 300.097 237.589 300.677C219.015 301.836 193.346 302.553 164.988 302.553C136.631 302.553 110.962 301.836 92.3873 300.677C83.0979 300.097 75.593 299.408 70.416 298.645C67.824 298.262 65.8355 297.864 64.5036 297.458C63.834 297.254 63.3598 297.057 63.063 296.874C62.8746 296.759 62.806 296.68 62.7819 296.645C62.806 296.61 62.8746 296.532 63.063 296.416C63.3598 296.234 63.834 296.036 64.5036 295.832C65.8355 295.426 67.824 295.028 70.416 294.646C75.593 293.882 83.0979 293.193 92.3873 292.613C110.962 291.455 136.631 290.738 164.988 290.738C193.346 290.738 219.015 291.455 237.589 292.613C246.879 293.193 254.384 293.882 259.561 294.646C262.153 295.028 264.141 295.426 265.473 295.832C266.143 296.036 266.617 296.234 266.914 296.416C267.102 296.532 267.171 296.61 267.195 296.645Z" fill="#151515" stroke="#323232"/>
                  <path d="M314.073 69.0214C314.073 70.2597 313.069 71.2635 311.831 71.2635C310.593 71.2635 309.589 70.2597 309.589 69.0214C309.589 67.7831 310.593 66.7793 311.831 66.7793C313.069 66.7793 314.073 67.7831 314.073 69.0214Z" fill="#5A5A5A" stroke="#323232"/>
@@ -25,8 +27,8 @@
                  <path d="M143.417 106.04C143.417 107.942 141.874 109.485 139.972 109.485C138.069 109.485 136.526 107.942 136.526 106.04C136.526 104.137 138.069 102.594 139.972 102.594C141.874 102.594 143.417 104.137 143.417 106.04Z" fill="#5A5A5A" stroke="#323232"/>
                 <path d="M80.9355 106.04C80.9355 107.942 79.393 109.485 77.4902 109.485C75.5874 109.485 74.0449 107.942 74.0449 106.04C74.0449 104.137 75.5874 102.594 77.4902 102.594C79.393 102.594 80.9355 104.137 80.9355 106.04Z" fill="#5A5A5A" stroke="#323232"/>
                 </svg>`,
-      downarrow:`<svg xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5"
+    downarrow: `<svg xmlns="http://www.w3.org/2000/svg"
+                class="h-4 w-4"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor">
@@ -35,25 +37,25 @@
                 stroke-width="2"
                 d="M19 9l-7 7-7-7" />
                 </svg>`,
-      uploadboxplusicon:`<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none" class=" m-auto">
+    uploadboxplusicon: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none" class=" m-auto">
                 <path
                  d="M18 26H30M24 20L24 32M34 42H14C11.7909 42 10 40.2091 10 38V10C10 7.79086 11.7909 6 14 6H25.1716C25.702 6 26.2107 6.21071 26.5858 6.58579L37.4142 17.4142C37.7893 17.7893 38 18.298 38 18.8284V38C38 40.2091 36.2091 42 34 42Z"
                  stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                  </svg>`,
-      questionmark:` <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+    questionmark: ` <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                       class="size-5 text-gray-400 ml-3 mt-1">
                       <path fill-rule="evenodd"
                         d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm11.378-3.917c-.89-.777-2.366-.777-3.255 0a.75.75 0 0 1-.988-1.129c1.454-1.272 3.776-1.272 5.23 0 1.513 1.324 1.513 3.518 0 4.842a3.75 3.75 0 0 1-.837.552c-.676.328-1.028.774-1.028 1.152v.75a.75.75 0 0 1-1.5 0v-.75c0-1.279 1.06-2.107 1.875-2.502.182-.088.351-.199.503-.331.83-.727.83-1.857 0-2.584ZM12 18a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z"
                         clip-rule="evenodd" />
                     </svg>`,
-       pdficon:`<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" class="m-auto">
+    pdficon: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" class="m-auto">
                       <path
                         d="M4 1H12C13.1046 1 14 1.89543 14 3V13C14 14.1046 13.1046 15 12 15H4C2.89543 15 2 14.1046 2 13V3C2 1.89543 2.89543 1 4 1Z"
                         stroke="#9CA3AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                       <path d="M10 1V5C10 5.55228 9.55228 6 9 6H5C4.44772 6 4 5.55228 4 5V1" stroke="#9CA3AF" stroke-width="2"
                         stroke-linecap="round" stroke-linejoin="round" />
                     </svg>`,
-        closeicon:` <svg
+    closeicon: ` <svg
                   class="h-6 w-6"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -67,12 +69,12 @@
                     d="M6 18L18 6M6 6l12 12"
                   />
                 </svg>`,
-        approvedicon:` <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+    approvedicon: ` <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
                     <circle opacity="0.2" cx="19.75" cy="20" r="19.75" fill="#34D399"/>
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M19.5 32.25C26.1274 32.25 31.5 26.8774 31.5 20.25C31.5 13.6226 26.1274 8.25 19.5 8.25C12.8726 8.25 7.5 13.6226 7.5 20.25C7.5 26.8774 12.8726 32.25 19.5 32.25ZM25.0607 18.3107C25.6464 17.7249 25.6464 16.7751 25.0607 16.1893C24.4749 15.6036 23.5251 15.6036 22.9393 16.1893L18 21.1287L16.0607 19.1893C15.4749 18.6036 14.5251 18.6036 13.9393 19.1893C13.3536 19.7751 13.3536 20.7249 13.9393 21.3107L16.9393 24.3107C17.5251 24.8964 18.4749 24.8964 19.0607 24.3107L25.0607 18.3107Z" fill="#34D399"/>
                     </svg>
                     `,
-        rejectedicon:` <svg
+    rejectedicon: ` <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="40"
                   height="40"
@@ -87,7 +89,7 @@
                     fill="#DC2626"
                   />
                 </svg>`,
-         underreviewicon:` <svg
+    underreviewicon: ` <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="40"
                   height="40"
@@ -106,18 +108,18 @@
                     fill="#FBBF24"
                   />
                 </svg>`,
-      searchicon:` <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+    searchicon: ` <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                   fill="none" viewBox="0 0 20 20">
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                 </svg>`,
-      leftarrowicon:`<svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+    leftarrowicon: `<svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                     <path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z" clip-rule="evenodd" />
                   </svg>`,
-      rightarrowicon:`<svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" >
+    rightarrowicon: `<svg class="h-5 w-5  " viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" >
             <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
           </svg>`,
-      filtericon: ` <svg
+    filtericon: ` <svg
                   xmlns="http://www.w3.org/2000/svg"
                   aria-hidden="true"
                   class="h-4 w-4 mr-2 text-gray-400"
@@ -130,15 +132,15 @@
                     clip-rule="evenodd"
                   ></path>
                 </svg>`,
-      backarrow:` <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+    backarrow: ` <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M7.70712 3.29289C8.09765 3.68342 8.09765 4.31658 7.70712 4.70711L5.41422 7H11C14.866 7 18 10.134 18 14V16C18 16.5523 17.5523 17 17 17C16.4478 17 16 16.5523 16 16V14C16 11.2386 13.7615 9 11 9H5.41422L7.70712 11.2929C8.09765 11.6834 8.09765 12.3166 7.70712 12.7071C7.3166 13.0976 6.68343 13.0976 6.29291 12.7071L2.29289 8.70711C1.90237 8.31658 1.90237 7.68342 2.29289 7.29289L6.29291 3.29289C6.68343 2.90237 7.3166 2.90237 7.70712 3.29289Z" fill="#9CA3AF" />
                   </svg>`,
-      notificationicon:`<svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    notificationicon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                <g id="heroicons-outline/bell">
                <path id="Vector" d="M14.8569 17.0817C16.7514 16.857 18.5783 16.4116 20.3111 15.7719C18.8743 14.177 17.9998 12.0656 17.9998 9.75V9.04919C17.9999 9.03281 18 9.01641 18 9C18 5.68629 15.3137 3 12 3C8.68629 3 6 5.68629 6 9L5.9998 9.75C5.9998 12.0656 5.12527 14.177 3.68848 15.7719C5.4214 16.4116 7.24843 16.857 9.14314 17.0818M14.8569 17.0817C13.92 17.1928 12.9666 17.25 11.9998 17.25C11.0332 17.25 10.0799 17.1929 9.14314 17.0818M14.8569 17.0817C14.9498 17.3711 15 17.6797 15 18C15 19.6569 13.6569 21 12 21C10.3431 21 9 19.6569 9 18C9 17.6797 9.05019 17.3712 9.14314 17.0818" 
                stroke="#000000" stroke-width="1.0" stroke-linecap="round" stroke-linejoin="round"/></g>
-               </svg>` ,
-      menuicon:` <svg
+               </svg>`,
+    menuicon: ` <svg
                   class="h-6 w-6"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -151,17 +153,17 @@
                     stroke-linejoin="round"
                     d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
                   />
-                </svg>`, 
-      infoicon:` <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6 text-gray-400 ml-1">
+                </svg>`,
+    infoicon: ` <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6 text-gray-400 ml-1">
                     <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm8.706-1.442c1.146-.573 2.437.463 2.126 1.706l-.709 2.836.042-.02a.75.75 0 0 1 .67 1.34l-.04.022c-1.147.573-2.438-.463-2.127-1.706l.71-2.836-.042.02a.75.75 0 1 1-.671-1.34l.041-.022ZM12 9a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z" clip-rule="evenodd" />
-                  </svg>`,     
-      lockicon:` <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                  </svg>`,
+    lockicon: ` <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
                     <path fill-Rule="evenodd" d="M12 1.5a5.25 5.25 0 0 0-5.25 5.25v3a3 3 0 0 0-3 3v6.75a3 3 0 0 0 3 3h10.5a3 3 0 0 0 3-3v-6.75a3 3 0 0 0-3-3v-3c0-2.9-2.35-5.25-5.25-5.25Zm3.75 8.25v-3a3.75 3.75 0 1 0-7.5 0v3h7.5Z" clip-Rule="evenodd" />
-                  </svg>  `,  
-     VerticalEllipsis:` <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  </svg>  `,
+    VerticalEllipsis: ` <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
               <path d="M10 3a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM10 8.5a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM11.5 15.5a1.5 1.5 0 10-3 0 1.5 1.5 0 003 0z" />
-            </svg>`, 
-    brandlogo:`  <svg
+            </svg>`,
+    brandlogo: `  <svg
         xmlns="http://www.w3.org/2000/svg"
         width="146"
         height="25"
@@ -198,7 +200,7 @@
           fill="black"
         />
       </svg>`,
-      personicon: ` <svg
+    personicon: ` <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="80"
                   height="80"
@@ -224,15 +226,296 @@
                     fill="#F59E0B"
                   />
                 </svg>`,
-    };
+    privatepdficon: `<svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-12 h-12 mx-auto my-8 "
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"
+          />
+        </svg> `,
+    fileupoadicon: ` <svg
+                class="mx-auto h-12 w-12 text-gray-400 group-hover:text-blue-600 transition-colors"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                />
+              </svg>`,
+    deleteiconred: ` <svg xmlns="http://www.w3.org/2000/svg" fill="none" width="18" height="18" viewBox="0 0 24 24" stroke-width="1"  class="stroke-red-500">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+                </svg>`,
+    uploadarrowicon: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M3 17C3 16.4477 3.44772 16 4 16H16C16.5523 16 17 16.4477 17 17C17 17.5523 16.5523 18 16 18H4C3.44772 18 3 17.5523 3 17ZM6.29289 6.70711C5.90237 6.31658 5.90237 5.68342 6.29289 5.29289L9.29289 2.29289C9.48043 2.10536 9.73478 2 10 2C10.2652 2 10.5196 2.10536 10.7071 2.29289L13.7071 5.29289C14.0976 5.68342 14.0976 6.31658 13.7071 6.70711C13.3166 7.09763 12.6834 7.09763 12.2929 6.70711L11 5.41421L11 13C11 13.5523 10.5523 14 10 14C9.44771 14 9 13.5523 9 13L9 5.41421L7.70711 6.70711C7.31658 7.09763 6.68342 7.09763 6.29289 6.70711Z" fill="#9CA3AF" />
+                </svg>`,
+    addmoreicon: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path
+                        d="M10 7.5V10M10 10V12.5M10 10H12.5M10 10H7.5M17.5 10C17.5 14.1421 14.1421 17.5 10 17.5C5.85786 17.5 2.5 14.1421 2.5 10C2.5 5.85786 5.85786 2.5 10 2.5C14.1421 2.5 17.5 5.85786 17.5 10Z"
+                        stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>`,
+    deleteicon: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M9 2C8.62123 2 8.27497 2.214 8.10557 2.55279L7.38197 4H4C3.44772 4 3 4.44772 3 5C3 5.55228 3.44772 6 4 6V16C4 17.1046 4.89543 18 6 18H14C15.1046 18 16 17.1046 16 16V6C16.5523 6 17 5.55228 17 5C17 4.44772 16.5523 4 16 4H12.618L11.8944 2.55279C11.725 2.214 11.3788 2 11 2H9ZM7 8C7 7.44772 7.44772 7 8 7C8.55228 7 9 7.44772 9 8V14C9 14.5523 8.55228 15 8 15C7.44772 15 7 14.5523 7 14V8ZM12 7C11.4477 7 11 7.44772 11 8V14C11 14.5523 11.4477 15 12 15C12.5523 15 13 14.5523 13 14V8C13 7.44772 12.5523 7 12 7Z"
+                        fill="#6B7280" />
+                </svg>`,
+    plusicon: `<svg class="mr-1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
+                        fill="none">
+                    <path d="M8 4V8M8 8V12M8 8H12M8 8L4 8" stroke="#9CA3AF" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                    </svg>`,
+    negativeicon: `  <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="15"
+                  height="15"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="2.5"
+                  stroke="currentColor"
+                  class="size-4"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M15 12H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                  />
+                </svg>`,
+    tickicon: `<svg
+                            class="h-6 w-6 text-white"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            aria-hidden="true"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z"
+                              clip-rule="evenodd"
+                            />
+                          </svg>`,
+    vectorlineicon: `<svg
+              class="h-full w-full text-gray-300"
+              viewBox="0 0 12 82"
+              fill="none"
+              preserveAspectRatio="none"
+            >
+              <path
+                d="M0.5 0V31L10.5 41L0.5 51V82"
+                stroke="currentcolor"
+                vector-effect="non-scaling-stroke"
+              />
+            </svg>`,
+    successtickicon: `   <svg class="w-5 h-5 text-green-500 mx-auto" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24ZM18.7071 8.70711L11 16.4142L7.29289 12.7071L8.70711 11.2929L11 13.5858L17.2929 7.29289L18.7071 8.70711Z" />
+                </svg>`,
+    loadingicon: `<svg aria-hidden="true" class="w-5 h-5 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
+                    <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
+                </svg> `,
+    plusiconwhite: ` <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-5 h-5 text-white mr-2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.75v14.5m7.25-7.25H4.75"/>
+                    </svg>`,
+    editicon: `<svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                >
+                <path
+                d="M20.2677 3.73223L20.9748 3.02513V3.02513L20.2677 3.73223ZM6.5 21.0355V22.0355C6.76522 22.0355 7.01957 21.9301 7.20711 21.7426L6.5 21.0355ZM3 21.0355H2C2 21.5878 2.44772 22.0355 3 22.0355V21.0355ZM3 17.4644L2.29289 16.7573C2.10536 16.9448 2 17.1992 2 17.4644H3ZM17.4393 4.43934C18.0251 3.85355 18.9748 3.85355 19.5606 4.43934L20.9748 3.02513C19.608 1.65829 17.3919 1.65829 16.0251 3.02513L17.4393 4.43934ZM19.5606 4.43934C20.1464 5.02513 20.1464 5.97487 19.5606 6.56066L20.9748 7.97487C22.3417 6.60804 22.3417 4.39196 20.9748 3.02513L19.5606 4.43934ZM19.5606 6.56066L5.79289 20.3284L7.20711 21.7426L20.9748 7.97487L19.5606 6.56066ZM6.5 20.0355H3V22.0355H6.5V20.0355ZM16.0251 3.02513L2.29289 16.7573L3.70711 18.1715L17.4393 4.43934L16.0251 3.02513ZM2 17.4644V21.0355H4V17.4644H2ZM14.5251 5.93934L18.0606 9.47487L19.4748 8.06066L15.9393 4.52513L14.5251 5.93934Z"
+                fill="#9CA3AF"
+              />
+                </svg>
+                   `,
+    filterarrowupicon:`  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path
+              d="M3 3C2.44772 3 2 3.44772 2 4C2 4.55228 2.44772 5 3 5H14C14.5523 5 15 4.55228 15 4C15 3.44772 14.5523 3 14 3H3Z"
+              fill="#9CA3AF" />
+            <path
+              d="M3 7C2.44772 7 2 7.44772 2 8C2 8.55228 2.44772 9 3 9H8C8.55228 9 9 8.55228 9 8C9 7.44772 8.55228 7 8 7H3Z"
+              fill="#9CA3AF" />
+            <path
+              d="M3 11C2.44772 11 2 11.4477 2 12C2 12.5523 2.44772 13 3 13H7C7.55228 13 8 12.5523 8 12C8 11.4477 7.55228 11 7 11H3Z"
+              fill="#9CA3AF" />
+            <path
+              d="M13 16C13 16.5523 13.4477 17 14 17C14.5523 17 15 16.5523 15 16L15 10.4142L16.2929 11.7071C16.6834 12.0976 17.3166 12.0976 17.7071 11.7071C18.0976 11.3166 18.0976 10.6834 17.7071 10.2929L14.7071 7.29289C14.5196 7.10536 14.2652 7 14 7C13.7348 7 13.4804 7.10536 13.2929 7.29289L10.2929 10.2929C9.90237 10.6834 9.90237 11.3166 10.2929 11.7071C10.6834 12.0976 11.3166 12.0976 11.7071 11.7071L13 10.4142L13 16Z"
+              fill="#9CA3AF" />
+          </svg>`,
+          filterarrowdownicon :`  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path
+                      d="M3 3C2.44771 3 2 3.44772 2 4C2 4.55228 2.44771 5 3 5H14C14.5523 5 15 4.55228 15 4C15 3.44772 14.5523 3 14 3H3Z"
+                      fill="#9CA3AF" />
+                    <path
+                      d="M3 7C2.44771 7 2 7.44772 2 8C2 8.55228 2.44771 9 3 9H9.99999C10.5523 9 11 8.55228 11 8C11 7.44772 10.5523 7 9.99999 7H3Z"
+                      fill="#9CA3AF" />
+                    <path
+                      d="M3 11C2.44771 11 2 11.4477 2 12C2 12.5523 2.44771 13 3 13H6.99999C7.55228 13 7.99999 12.5523 7.99999 12C7.99999 11.4477 7.55228 11 6.99999 11H3Z"
+                      fill="#9CA3AF" />
+                    <path
+                      d="M15 8C15 7.44772 14.5523 7 14 7C13.4477 7 13 7.44771 13 8L13 13.5858L11.7071 12.2929C11.3166 11.9024 10.6834 11.9024 10.2929 12.2929C9.90236 12.6834 9.90236 13.3166 10.2929 13.7071L13.2929 16.7071C13.4804 16.8946 13.7348 17 14 17C14.2652 17 14.5196 16.8946 14.7071 16.7071L17.7071 13.7071C18.0976 13.3166 18.0976 12.6834 17.7071 12.2929C17.3166 11.9024 16.6834 11.9024 16.2929 12.2929L15 13.5858L15 8Z"
+                      fill="#9CA3AF" />
+                  </svg>`,     
+    uplinearrow: `  <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  class="size-3"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M11.47 2.47a.75.75 0 0 1 1.06 0l3.75 3.75a.75.75 0 0 1-1.06 1.06l-2.47-2.47V21a.75.75 0 0 1-1.5 0V4.81L8.78 7.28a.75.75 0 0 1-1.06-1.06l3.75-3.75Z"
+                    clip-rule="evenodd"
+                  />
+                </svg>`,
+  downlinearrow: `   <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  class="size-3"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M12 2.25a.75.75 0 0 1 .75.75v16.19l2.47-2.47a.75.75 0 1 1 1.06 1.06l-3.75 3.75a.75.75 0 0 1-1.06 0l-3.75-3.75a.75.75 0 1 1 1.06-1.06l2.47 2.47V3a.75.75 0 0 1 .75-.75Z"
+                    clip-rule="evenodd"
+                  />
+                </svg>`,
+       rightcrossarrowicon:`<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M7.70712 3.29289C8.09765 3.68342 8.09765 4.31658 7.70712 4.70711L5.41422 7H11C14.866 7 18 10.134 18 14V16C18 16.5523 17.5523 17 17 17C16.4478 17 16 16.5523 16 16V14C16 11.2386 13.7615 9 11 9H5.41422L7.70712 11.2929C8.09765 11.6834 8.09765 12.3166 7.70712 12.7071C7.3166 13.0976 6.68343 13.0976 6.29291 12.7071L2.29289 8.70711C1.90237 8.31658 1.90237 7.68342 2.29289 7.29289L6.29291 3.29289C6.68343 2.90237 7.3166 2.90237 7.70712 3.29289Z" fill="#9CA3AF" />
+                  </svg>`,   
+       personiconwhite:` <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 text-white"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>`,
+      crosspersonicon:`<svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5 text-white"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <line x1="18" y1="8" x2="23" y2="13"></line>
+                  <line x1="23" y1="8" x2="18" y2="13"></line>
+                </svg>`  ,
+     checkmarkicon:` <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 text-white"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"
+                ></path>
+              </svg>`,      
+     thickdownlinearrow:` <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="3"
+                  stroke="currentColor"
+                  class="w-4 h-4 text-red-500"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M19.5 13.5L12 21l-7.5-7.5M12 21V3"
+                  />
+                </svg>`,    
+     thickuplinearrow:`<svg
+             xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 24 24"
+             fill="currentColor"
+             class="w-4 h-4 text-green-500"
+           >
+             <path
+               fill-rule="evenodd"
+               d="M11.47 2.47a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 1 1-1.06 1.06l-6.22-6.22V21a.75.75 0 0 1-1.5 0V4.81l-6.22 6.22a.75.75 0 1 1-1.06-1.06l7.5-7.5Z"
+               clip-rule="evenodd"
+               stroke-width="2"
+             />
+           </svg>`,     
+    plusiconblack:`<svg
+            class="h-5 w-5 mr-2"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+            />
+          </svg>` ,
+     downloadicon: `  <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-6 text-blue-500 hover:text-blue-700"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="rgb(58, 56, 56)"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5m0 0l5-5m-5 5V3"
+                  />
+                </svg>`   ,      
+      pdfarrowicon:`<svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  fill="none" 
+                  viewBox="0 0 24 24" 
+                  stroke-width="2" 
+                  stroke="currentColor"
+                  class="w-12 h-12 text-gray-400"
+                >
+                  <path 
+                    stroke-linecap="round" 
+                    stroke-linejoin="round" 
+                    d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m6.75 12-3-3m0 0-3 3m3-3v6m-1.5-15H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" 
+                  />
+                </svg>`                                            
+  };
 
-    $: svgContent = svgs[type] || null;
-  </script>
-  
-  {#if svgContent}
+  let svgContent = svgs[type] || null;
+
+  if (customClass && svgContent) {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(svgContent, "image/svg+xml");
+    const svgElement = doc.querySelector("svg");
+    if (svgElement) {
+      svgElement.setAttribute("class", customClass);
+      svgContent = new XMLSerializer().serializeToString(doc);
+    }
+  }
+</script>
+
+{#if svgContent}
   <div class={`svg-wrapper ${customClass}`} aria-label={type} role="img">
     {@html svgContent}
-    </div>  
-  {/if}
-
-  
+  </div>
+{/if}
